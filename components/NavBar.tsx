@@ -1,24 +1,5 @@
 import NextImage from "next/image";
 import { Box } from "@chakra-ui/layout";
-import { MdHome } from "react-icons/md";
-
-// const navMenu = [
-//     {
-//         name: "Home",
-//         icon: MdHome,
-//         route: "/",
-//     },
-//     {
-//         name: "Logout",
-//         icon: MdHome,
-//         route: "/logout",
-//     },
-//     {
-//         name: "Your Boards",
-//         icon: MdHome,
-//         route: "/boards",
-//     },
-// ];
 
 const NavBar = () => {
     return (
