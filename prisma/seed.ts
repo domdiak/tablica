@@ -4,6 +4,8 @@ import { userData, cardsData, categoryData } from "./mockData";
 
 const prisma = new PrismaClient();
 
+// Reset database ==> npx prisma migrate reset
+
 const run = async () => {
     await prisma.card.deleteMany({});
     await prisma.category.deleteMany({});
