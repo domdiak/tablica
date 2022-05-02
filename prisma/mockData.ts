@@ -1,8 +1,12 @@
+import bcrypt from "bcrypt";
+
+const salt = bcrypt.genSaltSync();
+
 export const userData = [
     {
         first: "Dom",
         last: "Diak",
-        password: "123",
+        password: bcrypt.hashSync("123", salt),
         email: "domdiak@gmail.com",
     },
 ];

@@ -12,8 +12,8 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
-  first String 
-  last String
+  first String? 
+  last String?
   password String 
   email String @unique
   createdAt DateTime @default(now())
