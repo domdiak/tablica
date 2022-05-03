@@ -6,7 +6,8 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "next lint",
+        "cypress": "cypress open"
     },
     "dependencies": {
         "@chakra-ui/layout": "^1.5.1",
@@ -36,10 +37,12 @@
         "@typescript-eslint/eslint-plugin": "^5.6.0",
         "@typescript-eslint/parser": "^5.6.0",
         "babel-plugin-superjson-next": "^0.4.2",
+        "cypress": "^9.6.0",
         "eslint": "8.14.0",
         "eslint-config-airbnb": "^19.0.2",
         "eslint-config-next": "12.1.5",
         "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-cypress": "^2.12.1",
         "eslint-plugin-import": "^2.25.3",
         "eslint-plugin-jsx-a11y": "^6.5.1",
         "eslint-plugin-prettier": "^4.0.0",
