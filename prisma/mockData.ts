@@ -4,7 +4,6 @@ const salt = bcrypt.genSaltSync();
 
 export const userData = [
     {
-        first: "Dom",
         last: "Diak",
         password: bcrypt.hashSync("123", salt),
         email: "domdiak@gmail.com",

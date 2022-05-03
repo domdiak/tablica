@@ -1,11 +1,14 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { NextApiRequest, NextApiResponse } from "next";
 import cookie from "cookie";
 import prisma from "../../lib/prisma";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const salt = bcrypt.genSaltSync();
     const { email, password } = req.body;
+    console.log(email, password);
+
     let user;
 
     try {
@@ -16,6 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             },
         });
     } catch (e) {
+        console.log(here);
         res.status(401);
         res.json({ error: "User already exists" });
         return;

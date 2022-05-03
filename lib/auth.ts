@@ -5,6 +5,7 @@ import prisma from "./prisma";
 export const validateRoute = (handler) => {
     return async (req: NextApiRequest, res: NextApiResponse) => {
         const token = req.cookies.ACCESS_TOKEN;
+        console.log("token", token);
 
         if (token) {
             let user;
