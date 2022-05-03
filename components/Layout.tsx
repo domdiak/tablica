@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/layout";
 import NavBar from "./NavBar";
-import Board from "./Board";
 
 const Layout = ({ children }) => {
     return (
@@ -9,10 +8,7 @@ const Layout = ({ children }) => {
                 {" "}
                 <NavBar />
             </Box>
-            <Box paddingTop="50px">
-                {/* <Board /> */}
-                {children}
-            </Box>
+            <Box paddingTop="50px">{children}</Box>
         </Box>
     );
 };
