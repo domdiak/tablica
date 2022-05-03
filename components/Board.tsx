@@ -1,18 +1,19 @@
-import { Box, List, ListItem } from "@chakra-ui/layout";
-import { useCard } from "../lib/hooks";
+import { Box, List, ListItem, Flex } from "@chakra-ui/layout";
+// import { FC } from "react";
+import { useCard, useCategory } from "../lib/hooks";
+import CategoryColumn from "./CategoryColumn";
 
 const Board = () => {
     const { cards } = useCard();
+    const { categories } = useCategory();
     console.log("Cards from useCard:", cards);
 
     return (
-        <Box>
-            <List>
-                {cards.map((card) => (
-                    <ListItem key={card.id}>{card.title}</ListItem>
-                ))}
-            </List>
-        </Box>
+        <Flex direction="row">
+            {categories.map((category) => (
+                <CategoryColumn category={category} key={category.id} />
+            ))}
+        </Flex>
     );
 };
 

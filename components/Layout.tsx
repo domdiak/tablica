@@ -10,8 +10,8 @@ const Layout = ({ children }) => {
                 <NavBar />
             </Box>
             <Box paddingTop="50px">
+                {/* <Board /> */}
                 {children}
-                <Board />
             </Box>
         </Box>
     );
