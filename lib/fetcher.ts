@@ -1,5 +1,4 @@
 export default function fetcher(url: string, data = undefined) {
-    console.log("data", data);
     return fetch(`${window.location.origin}/api${url}`, {
         method: data ? "POST" : "GET",
         credentials: "include",

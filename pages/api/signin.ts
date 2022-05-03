@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         );
 
         res.setHeader(
-            "Set-Cookies",
+            "Set-Cookie",
             cookie.serialize("ACCESS_TOKEN", token, {
                 httpOnly: true,
                 maxAge: 24 * 60 * 60,

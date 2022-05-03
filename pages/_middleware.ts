@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 
-const signedInPages = ["/"];
+const signedinPages = ["/"];
 
 export default function middleware(req) {
-    if (signedInPages.find((p) => p === req.nextUrl)) {
+    if (signedinPages.find((p) => p === req.nextUrl.pathname)) {
         const token = req.cookies.ACCESS_TOKEN;
 
         if (!token) {
