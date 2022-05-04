@@ -2,6 +2,7 @@ import { Box, Flex, Input, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { useSWRConfig } from "swr";
+import Link from "next/link";
 import { auth } from "../lib/mutations";
 
 const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
@@ -25,7 +26,12 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                 Logo
             </Flex>
             <Flex justify="center" align="center" height="calc(100vh - 100px">
-                <Box padding="50px" bg="gray.900" borderRadius="6px">
+                <Box
+                    padding="50px"
+                    bg="gray.900"
+                    borderRadius="6px"
+                    data-cy="signin-form"
+                >
                     <form onSubmit={handleSubmit}>
                         <Input
                             placeholder="email"
@@ -46,6 +52,13 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                             Signin{" "}
                         </Button>
                     </form>
+                    {mode === "signin" && (
+                        <Box data-cy="1">
+                            {" "}
+                            Don't have an account? Sign up{" "}
+                            <Link href="/signup"> here. </Link>{" "}
+                        </Box>
+                    )}
                 </Box>
             </Flex>
         </Box>

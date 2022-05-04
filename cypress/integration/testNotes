@@ -1,0 +1,18 @@
+Log in
+ Edge cases:
+ - wrong email
+ - wrong password
+
+Register
+ Edge cases:
+ - wrong password
+ ...
+
+Test setup & teardown
+setup: 
+- connect to database
+
+teardown:
+- clear database
+- disconnect database
+
