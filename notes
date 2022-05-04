@@ -1,0 +1,13 @@
+Things to do: 
+
+Add Menu: 
+--> Buttons: Logout, Home, Boards, Add a new board 
+
+Board: 
+--> Drag and drop functionality 
+--> Add a card component:
+    --> Input fields: title, description, url 
+    --> Correct prisma to add url 
+    --> Button submit 
+    --> Backend: 
+        --> Add API route to create a new entry 
