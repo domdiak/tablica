@@ -41,6 +41,12 @@ export const cardsData = [
         userId: 1,
         categoryId: 3,
     },
+    {
+        title: "Role 6",
+        description: "Company 6",
+        userId: 1,
+        categoryId: 3,
+    },
 ];
 
 export const categoryData = [

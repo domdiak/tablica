@@ -6,6 +6,9 @@ export default validateRoute(async (req, res, user) => {
         where: {
             userId: user.id,
         },
+        include: {
+            cards: true,
+        },
     });
 
     res.json(categories);

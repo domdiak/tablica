@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/layout";
 import { Draggable } from "react-beautiful-dnd";
 
-const Card = ({ card }) => {
+const Card = ({ card, index }) => {
     return (
-        <Draggable draggableId={card.title} index={card.id}>
+        <Draggable draggableId={card.title} index={index}>
             {(provided) => (
                 <Box
                     width="150px"
