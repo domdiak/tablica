@@ -3,7 +3,7 @@ import { Flex } from "@chakra-ui/layout";
 import { Droppable } from "react-beautiful-dnd";
 import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
-import CategoryColumn from "../components/CategoryColumn";
+import CategoryColumn from "./CategoryColumn";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
 

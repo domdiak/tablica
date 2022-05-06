@@ -10,6 +10,7 @@
         "cypress": "cypress open"
     },
     "dependencies": {
+        "@chakra-ui/icons": "^1.1.7",
         "@chakra-ui/layout": "^1.5.1",
         "@chakra-ui/react": "^1.7.2",
         "@dh-react-hooks/use-raf": "^0.9.1",
