@@ -1,20 +1,22 @@
 import { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/layout";
-import {
-    DragDropContext,
-    Droppable,
-    resetServerContext,
-} from "react-beautiful-dnd";
+import { Droppable } from "react-beautiful-dnd";
+import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
 import CategoryColumn from "../components/CategoryColumn";
-import { useMe } from "../lib/hooks";
 import prisma from "../lib/prisma";
-import { validateRoute } from "../lib/auth";
-// import category from "./api/category";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
     console.log({ categories });
+
+    const DragDropContext = dynamic(
+        () =>
+            import("react-beautiful-dnd").then((mod) => {
+                return mod.DragDropContext;
+            }),
+        { ssr: false }
+    );
 
     const onDragEnd = (result) => {
         console.log(result);
@@ -44,6 +46,9 @@ const Home = ({ categoriesData }) => {
             cards: newCards,
         };
         console.log({ newColumn });
+        console.log("newColumn.id", newColumn.id);
+        console.log({ [newColumn.id]: newColumn });
+        console.log({ ...categories });
         // setCategories({
         //     ...categories,
         //     newColumn,
