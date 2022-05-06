@@ -1,7 +1,8 @@
 import { Box } from "@chakra-ui/layout";
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable, resetServerContext } from "react-beautiful-dnd";
 
 const Card = ({ card, index }) => {
+    resetServerContext();
     return (
         <Draggable draggableId={card.title} index={index}>
             {(provided) => (

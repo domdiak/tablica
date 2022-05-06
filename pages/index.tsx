@@ -5,18 +5,16 @@ import {
     Droppable,
     resetServerContext,
 } from "react-beautiful-dnd";
+import { GetServerSideProps } from "next";
 import CategoryColumn from "../components/CategoryColumn";
 import { useMe } from "../lib/hooks";
 import prisma from "../lib/prisma";
-import { validateRoute } from "../../lib/auth";
-import fetcher from "../lib/fetcher";
+import { validateRoute } from "../lib/auth";
 // import category from "./api/category";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
     console.log({ categories });
-    const { user } = useMe();
-    console.log({ user });
 
     const onDragEnd = (result) => {
         console.log(result);
@@ -48,6 +46,7 @@ const Home = ({ categoriesData }) => {
         console.log({ newColumn });
         // setCategories({
         //     ...categories,
+        //     newColumn,
         // });
     };
 
@@ -71,12 +70,8 @@ const Home = ({ categoriesData }) => {
     );
 };
 
-export const getServerSideProps = validateRoute(async (req, res, user) => {
-    resetServerContext();
+export const getServerSideProps: GetServerSideProps = async () => {
     const categories = await prisma.category.findMany({
-        where: {
-            userId: user.id,
-        },
         include: {
             cards: true,
         },
@@ -85,6 +80,6 @@ export const getServerSideProps = validateRoute(async (req, res, user) => {
     return {
         props: { categoriesData: categories },
     };
-});
+};
 
 export default Home;

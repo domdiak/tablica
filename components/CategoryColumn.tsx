@@ -1,5 +1,5 @@
 import { Box } from "@chakra-ui/layout";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable, resetServerContext } from "react-beautiful-dnd";
 import Card from "./Card";
 import { useCard } from "../lib/hooks";
 
