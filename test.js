@@ -23,12 +23,6 @@ const updatedCategories = array.map((category) => {
 
 // console.log("updated", updatedCategories);
 
-const mappedCategories = updatedCategories.map((category) => {
-    return category.name;
-});
-
-// console.log("mapped", mappedCategories);
-
 const updatedArray = [
     {
         Applied: {
@@ -50,4 +44,10 @@ const updatedArray = [
     },
 ];
 
-console.log("updatedArray", updatedArray);
+// console.log("updatedArray", updatedArray);
+
+const mappedCategories = updatedArray.map((category) => {
+    {category.}
+});
+
+// console.log("mapped", mappedCategories);

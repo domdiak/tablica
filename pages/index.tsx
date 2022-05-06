@@ -9,6 +9,7 @@ import prisma from "../lib/prisma";
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
     console.log({ categories });
+    console.log(categories.name);
 
     const DragDropContext = dynamic(
         () =>
@@ -21,23 +22,19 @@ const Home = ({ categoriesData }) => {
     const onDragEnd = (result) => {
         console.log(result);
         const { destination, source, draggableId } = result;
-
         if (!destination) {
             return;
         }
-
         if (
             destination.droppableId === source.droppableId &&
             destination.index === source.index
         ) {
             return;
         }
-
         const sourceColumn = categories.find(
             (column) => column.name === source.droppableId
         );
-        console.log(sourceColumn);
-
+        const columnIndex = categories.indexOf(sourceColumn);
         const newCards = Array.from(sourceColumn.cards);
         const [removedTask] = newCards.splice(source.index, 1);
         newCards.splice(destination.index, 0, removedTask);
@@ -45,14 +42,9 @@ const Home = ({ categoriesData }) => {
             ...sourceColumn,
             cards: newCards,
         };
-        console.log({ newColumn });
-        console.log("newColumn.id", newColumn.id);
-        console.log({ [newColumn.id]: newColumn });
-        console.log({ ...categories });
-        // setCategories({
-        //     ...categories,
-        //     newColumn,
-        // });
+        const newState = Array.from(categories);
+        newState[columnIndex] = newColumn;
+        setCategories(newState);
     };
 
     return (
@@ -83,7 +75,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
     });
 
     return {
-        props: { categoriesData: categories },
+        props: {
+            categoriesData: categories,
+        },
     };
 };
 
