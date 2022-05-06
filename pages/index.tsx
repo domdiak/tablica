@@ -20,8 +20,18 @@ const Home = ({ categoriesData }) => {
     );
 
     const onDragEnd = (result) => {
-        console.log(result);
+        console.log({ result });
+
         const { destination, source, draggableId } = result;
+        const sourceColumn = categories.find(
+            (column) => column.name === source.droppableId
+        );
+        const destinationColumn = categories.find(
+            (column) => column.name === destination.droppableId
+        );
+        const sourceColumnIndex = categories.indexOf(sourceColumn);
+        const destinationColumnIndex = categories.indexOf(destinationColumn);
+
         if (!destination) {
             return;
         }
@@ -31,20 +41,48 @@ const Home = ({ categoriesData }) => {
         ) {
             return;
         }
-        const sourceColumn = categories.find(
-            (column) => column.name === source.droppableId
-        );
-        const columnIndex = categories.indexOf(sourceColumn);
-        const newCards = Array.from(sourceColumn.cards);
-        const [removedTask] = newCards.splice(source.index, 1);
-        newCards.splice(destination.index, 0, removedTask);
-        const newColumn = {
-            ...sourceColumn,
-            cards: newCards,
-        };
-        const newState = Array.from(categories);
-        newState[columnIndex] = newColumn;
-        setCategories(newState);
+
+        if (sourceColumn === destinationColumn) {
+            const newCards = Array.from(sourceColumn.cards);
+            const [removedCard] = newCards.splice(source.index, 1);
+            newCards.splice(destination.index, 0, removedCard);
+            console.log({ newCards });
+
+            const newColumn = {
+                ...sourceColumn,
+                cards: newCards,
+            };
+            console.log({ newColumn });
+
+            // Copies an array of categories
+            const newState = Array.from(categories);
+            // Replaces updated column based on sourceColumnIndex
+            newState[sourceColumnIndex] = newColumn;
+            console.log({ newState });
+
+            setCategories(newState);
+        } else {
+            const newSourceCards = Array.from(sourceColumn.cards);
+            const [removedCard] = newSourceCards.splice(source.index, 1);
+            const newSourceColumn = {
+                ...sourceColumn,
+                cards: newSourceCards,
+            };
+
+            const newDestinationCards = Array.from(destinationColumn.cards);
+            newDestinationCards.splice(destination.index, 0, removedCard);
+
+            const newDestinationColumn = {
+                ...destinationColumn,
+                cards: newDestinationCards,
+            };
+
+            // Update state with new cards
+            const newState = Array.from(categories);
+            newState[sourceColumnIndex] = newSourceColumn;
+            newState[destinationColumnIndex] = newDestinationColumn;
+            setCategories(newState);
+        }
     };
 
     return (
