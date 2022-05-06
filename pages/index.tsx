@@ -5,11 +5,10 @@ import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
 import CategoryColumn from "../components/CategoryColumn";
 import prisma from "../lib/prisma";
+import fetcher from "../lib/fetcher";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
-    console.log({ categories });
-    console.log(categories.name);
 
     const DragDropContext = dynamic(
         () =>
@@ -19,9 +18,13 @@ const Home = ({ categoriesData }) => {
         { ssr: false }
     );
 
-    const onDragEnd = (result) => {
-        console.log({ result });
+    const updateCard = async (cardId, categoryId) => {
+        const data = { cardId, categoryId };
+        fetcher("/updateCard", data);
+    };
 
+    const onDragEnd = (result) => {
+        console.log("DnD event:", result);
         const { destination, source, draggableId } = result;
         const sourceColumn = categories.find(
             (column) => column.name === source.droppableId
@@ -45,25 +48,24 @@ const Home = ({ categoriesData }) => {
         if (sourceColumn === destinationColumn) {
             const newCards = Array.from(sourceColumn.cards);
             const [removedCard] = newCards.splice(source.index, 1);
+
             newCards.splice(destination.index, 0, removedCard);
-            console.log({ newCards });
 
             const newColumn = {
                 ...sourceColumn,
                 cards: newCards,
             };
-            console.log({ newColumn });
 
             // Copies an array of categories
             const newState = Array.from(categories);
             // Replaces updated column based on sourceColumnIndex
             newState[sourceColumnIndex] = newColumn;
-            console.log({ newState });
 
             setCategories(newState);
         } else {
             const newSourceCards = Array.from(sourceColumn.cards);
             const [removedCard] = newSourceCards.splice(source.index, 1);
+            console.log({ removedCard });
             const newSourceColumn = {
                 ...sourceColumn,
                 cards: newSourceCards,
@@ -81,7 +83,10 @@ const Home = ({ categoriesData }) => {
             const newState = Array.from(categories);
             newState[sourceColumnIndex] = newSourceColumn;
             newState[destinationColumnIndex] = newDestinationColumn;
+            console.log({ newDestinationColumn });
+
             setCategories(newState);
+            updateCard(removedCard.id, newDestinationColumn.id);
         }
     };
 

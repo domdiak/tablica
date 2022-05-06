@@ -44,6 +44,8 @@ const updatedArray = [
     },
 ];
 
+const {}
+
 // console.log("updatedArray", updatedArray);
 
 const mappedCategories = updatedArray.map((category) => {
