@@ -14,7 +14,27 @@ import {
     Button,
 } from "@chakra-ui/react";
 
+import { useState } from "react";
+
+import fetcher from "../lib/fetcher";
+
 const AddCard = ({ isOpen, onClose }) => {
+    const [inputData, setInputData] = useState({
+        title: "",
+        description: "",
+        link: "",
+    });
+
+    const handleChange = (e) => {
+        setInputData({
+            ...inputData,
+            [e.target.name]: e.target.value,
+        });
+    };
+    const addNewCard = async (data) => {
+        console.log("Data from add new card:", data);
+        await fetcher("/addNewCard", data);
+    };
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -28,15 +48,28 @@ const AddCard = ({ isOpen, onClose }) => {
                         id="add-card"
                         onSubmit={(e) => {
                             e.preventDefault();
+                            addNewCard(inputData);
                         }}
                     >
-                        <FormControl isRequired>
+                        <FormControl>
                             <FormLabel> Title</FormLabel>
-                            <Input type="title" />
+                            <Input
+                                onChange={handleChange}
+                                type="title"
+                                name="title"
+                            />
                             <FormLabel> Description</FormLabel>
-                            <Input type="description" />
+                            <Input
+                                onChange={handleChange}
+                                type="description"
+                                name="description"
+                            />
                             <FormLabel> Link</FormLabel>
-                            <Input type="link" />
+                            <Input
+                                onChange={handleChange}
+                                type="link"
+                                name="link"
+                            />
                         </FormControl>
                     </form>
                 </ModalBody>

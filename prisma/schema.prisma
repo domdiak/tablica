@@ -26,6 +26,7 @@ model Card {
   id Int @id @default(autoincrement())
   title String 
   description String
+  link String
   user User @relation(fields: [userId], references: [id])
   userId Int
   category Category @relation(references: [id], fields: [categoryId])

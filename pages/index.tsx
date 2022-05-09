@@ -12,8 +12,6 @@ import AddCard from "./addCard";
 const Home = ({ categoriesData }) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const [categories, setCategories] = useState(categoriesData);
-    // const [showAddCard, setShowAddCard] = useState(false);
-    console.log({ onClose });
 
     const DragDropContext = dynamic(
         () =>
@@ -95,12 +93,10 @@ const Home = ({ categoriesData }) => {
         }
     };
 
-    console.log({ isOpen });
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Button onClick={onOpen}> Add Card</Button>
             {isOpen && <AddCard isOpen={isOpen} onClose={onClose} />}
-            {/* <AddCard  /> */}
             <Flex direction="row">
                 {categories.map((category, index) => (
                     <Droppable droppableId={category.name} key={category.id}>
