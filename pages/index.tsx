@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/layout";
+import { useDisclosure, Button } from "@chakra-ui/react";
 import { Droppable } from "react-beautiful-dnd";
 import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
 import CategoryColumn from "./CategoryColumn";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
+import AddCard from "./addCard";
 
 const Home = ({ categoriesData }) => {
+    const { isOpen, onClose, onOpen } = useDisclosure();
     const [categories, setCategories] = useState(categoriesData);
+    // const [showAddCard, setShowAddCard] = useState(false);
+    console.log({ onClose });
 
     const DragDropContext = dynamic(
         () =>
@@ -90,8 +95,12 @@ const Home = ({ categoriesData }) => {
         }
     };
 
+    console.log({ isOpen });
     return (
         <DragDropContext onDragEnd={onDragEnd}>
+            <Button onClick={onOpen}> Add Card</Button>
+            {isOpen && <AddCard isOpen={isOpen} onClose={onClose} />}
+            {/* <AddCard  /> */}
             <Flex direction="row">
                 {categories.map((category, index) => (
                     <Droppable droppableId={category.name} key={category.id}>
