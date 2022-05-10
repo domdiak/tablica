@@ -11,6 +11,7 @@ import AddCardModal from "./AddCardModal";
 import AddCatModal from "./AddCatModal";
 
 const Home = ({ categoriesData }) => {
+    const [categories, setCategories] = useState(categoriesData);
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     const {
@@ -18,8 +19,6 @@ const Home = ({ categoriesData }) => {
         onClose: onCloseAddCatModal,
         onOpen: onOpenAddCatModal,
     } = useDisclosure();
-
-    const [categories, setCategories] = useState(categoriesData);
 
     const DragDropContext = dynamic(
         () =>
@@ -30,7 +29,6 @@ const Home = ({ categoriesData }) => {
     );
 
     const updateCard = async (cardId, categoryId) => {
-        console.log("cardId", cardId, "categoryId", categoryId);
         const data = { cardId, categoryId };
         fetcher("/updateCard", data);
     };
@@ -109,7 +107,7 @@ const Home = ({ categoriesData }) => {
             {isOpen && (
                 <AddCardModal
                     isOpen={isOpen}
-                    onClose={onCloseAddCatModal}
+                    onClose={onClose}
                     categories={categories}
                 />
             )}

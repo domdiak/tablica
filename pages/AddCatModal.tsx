@@ -23,24 +23,18 @@ import fetcher from "../lib/fetcher";
 const AddCatModal = ({ isOpen, onClose }) => {
     const router = useRouter();
     const [inputData, setInputData] = useState({
-        title: "",
-        description: "",
-        link: "",
-        categoryId: 1,
+        name: "",
     });
 
     const handleChange = (e) => {
         setInputData({
             ...inputData,
-            [e.target.name]:
-                e.target.name === "categoryId"
-                    ? parseInt(e.target.value)
-                    : e.target.value,
+            [e.target.name]: e.target.value,
         });
     };
     const handleSubmit = async (data) => {
         console.log("Data from add new card:", data);
-        await fetcher("/addNewCard", data);
+        await fetcher("/addNewCat", data);
         router.reload();
     };
     return (
@@ -63,8 +57,8 @@ const AddCatModal = ({ isOpen, onClose }) => {
                             <FormLabel> Title</FormLabel>
                             <Input
                                 onChange={handleChange}
-                                type="title"
-                                name="title"
+                                type="name"
+                                name="name"
                             />
                         </FormControl>
                     </form>
