@@ -7,10 +7,18 @@ import { GetServerSideProps } from "next";
 import CategoryColumn from "./CategoryColumn";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
-import AddCard from "./addCard";
+import AddCardModal from "./AddCardModal";
+import AddCatModal from "./AddCatModal";
 
 const Home = ({ categoriesData }) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
+
+    const {
+        isOpen: isOpenAddCatModal,
+        onClose: onCloseAddCatModal,
+        onOpen: onOpenAddCatModal,
+    } = useDisclosure();
+
     const [categories, setCategories] = useState(categoriesData);
 
     const DragDropContext = dynamic(
@@ -97,11 +105,18 @@ const Home = ({ categoriesData }) => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Button onClick={onOpen}> Add Card</Button>
+            <Button onClick={onOpenAddCatModal}> Add Category</Button>
             {isOpen && (
-                <AddCard
+                <AddCardModal
                     isOpen={isOpen}
-                    onClose={onClose}
+                    onClose={onCloseAddCatModal}
                     categories={categories}
+                />
+            )}
+            {isOpenAddCatModal && (
+                <AddCatModal
+                    isOpen={isOpenAddCatModal}
+                    onClose={onCloseAddCatModal}
                 />
             )}
             <Flex direction="row">

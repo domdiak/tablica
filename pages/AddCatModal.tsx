@@ -20,7 +20,7 @@ import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
 
-const AddCard = ({ isOpen, onClose, categories }) => {
+const AddCatModal = ({ isOpen, onClose }) => {
     const router = useRouter();
     const [inputData, setInputData] = useState({
         title: "",
@@ -48,7 +48,7 @@ const AddCard = ({ isOpen, onClose, categories }) => {
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>
-                    Add a new card:
+                    Add a new category:
                     <ModalCloseButton />
                 </ModalHeader>
                 <ModalBody>
@@ -66,36 +66,6 @@ const AddCard = ({ isOpen, onClose, categories }) => {
                                 type="title"
                                 name="title"
                             />
-                            <FormLabel> Description</FormLabel>
-                            <Input
-                                onChange={handleChange}
-                                type="description"
-                                name="description"
-                            />
-                            <FormLabel> Link</FormLabel>
-                            <Input
-                                onChange={handleChange}
-                                type="link"
-                                name="link"
-                            />
-                            <FormLabel> Category</FormLabel>
-                            <Select
-                                placeholder="Select category"
-                                onChange={handleChange}
-                                name="categoryId"
-                            >
-                                {categories.map((category) => {
-                                    return (
-                                        <option
-                                            key={category.id}
-                                            value={category.id}
-                                        >
-                                            {" "}
-                                            {category.name}{" "}
-                                        </option>
-                                    );
-                                })}
-                            </Select>
                         </FormControl>
                     </form>
                 </ModalBody>
@@ -111,4 +81,4 @@ const AddCard = ({ isOpen, onClose, categories }) => {
     );
 };
 
-export default AddCard;
+export default AddCatModal;
