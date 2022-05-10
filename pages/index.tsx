@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Flex } from "@chakra-ui/layout";
 import { useDisclosure, Button } from "@chakra-ui/react";
 import { Droppable } from "react-beautiful-dnd";
@@ -22,6 +22,7 @@ const Home = ({ categoriesData }) => {
     );
 
     const updateCard = async (cardId, categoryId) => {
+        console.log("cardId", cardId, "categoryId", categoryId);
         const data = { cardId, categoryId };
         fetcher("/updateCard", data);
     };
@@ -96,7 +97,13 @@ const Home = ({ categoriesData }) => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Button onClick={onOpen}> Add Card</Button>
-            {isOpen && <AddCard isOpen={isOpen} onClose={onClose} />}
+            {isOpen && (
+                <AddCard
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    categories={categories}
+                />
+            )}
             <Flex direction="row">
                 {categories.map((category, index) => (
                     <Droppable droppableId={category.name} key={category.id}>

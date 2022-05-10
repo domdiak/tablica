@@ -12,28 +12,36 @@ import {
     FormHelperText,
     Input,
     Button,
+    Select,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
 
-const AddCard = ({ isOpen, onClose }) => {
+const AddCard = ({ isOpen, onClose, categories }) => {
+    const router = useRouter();
     const [inputData, setInputData] = useState({
         title: "",
         description: "",
         link: "",
+        categoryId: 1,
     });
 
     const handleChange = (e) => {
         setInputData({
             ...inputData,
-            [e.target.name]: e.target.value,
+            [e.target.name]:
+                e.target.name === "categoryId"
+                    ? parseInt(e.target.value)
+                    : e.target.value,
         });
     };
     const addNewCard = async (data) => {
         console.log("Data from add new card:", data);
         await fetcher("/addNewCard", data);
+        router.reload();
     };
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -70,6 +78,24 @@ const AddCard = ({ isOpen, onClose }) => {
                                 type="link"
                                 name="link"
                             />
+                            <FormLabel> Category</FormLabel>
+                            <Select
+                                placeholder="Select category"
+                                onChange={handleChange}
+                                name="categoryId"
+                            >
+                                {categories.map((category) => {
+                                    return (
+                                        <option
+                                            key={category.id}
+                                            value={category.id}
+                                        >
+                                            {" "}
+                                            {category.name}{" "}
+                                        </option>
+                                    );
+                                })}
+                            </Select>
                         </FormControl>
                     </form>
                 </ModalBody>
