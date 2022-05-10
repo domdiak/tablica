@@ -38,7 +38,7 @@ const AddCard = ({ isOpen, onClose, categories }) => {
                     : e.target.value,
         });
     };
-    const addNewCard = async (data) => {
+    const handleSubmit = async (data) => {
         console.log("Data from add new card:", data);
         await fetcher("/addNewCard", data);
         router.reload();
@@ -56,7 +56,7 @@ const AddCard = ({ isOpen, onClose, categories }) => {
                         id="add-card"
                         onSubmit={(e) => {
                             e.preventDefault();
-                            addNewCard(inputData);
+                            handleSubmit(inputData);
                         }}
                     >
                         <FormControl>
