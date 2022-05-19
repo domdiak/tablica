@@ -102,7 +102,6 @@ const Home = ({ categoriesData }) => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <Button onClick={onOpen}> Add Card</Button>
             <Button onClick={onOpenAddCatModal}> Add Category</Button>
             {isOpen && (
                 <AddCardModal
@@ -126,6 +125,8 @@ const Home = ({ categoriesData }) => {
                                 key={category.id}
                                 index={index}
                                 provided={provided}
+                                onOpen={onOpen}
+                                isOpen={isOpen}
                             />
                         )}
                     </Droppable>

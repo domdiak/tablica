@@ -1,13 +1,24 @@
-Things to do: 
+--> When user doesn't exist, the loading doesn't end 
+--> Add archive on clicking delete 
+--> Modal for deleting 
 
-Add Menu: 
---> Buttons: Logout, Home, Boards, Add a new board 
 
-Board: 
---> Drag and drop functionality 
---> Add a card component:
-    --> Input fields: title, description, url 
-    --> Correct prisma to add url 
-    --> Button submit 
-    --> Backend: 
-        --> Add API route to create a new entry 
+
+Category:
+---> Options: 
+    ---> Edit name
+    ---> Delete Category
+
+Cards: 
+---> Options:
+    ---> Edit
+    ---> Delete
+    -> archive
+
+--> Click: 
+    ---> Comments modal
+
+Archive:
+--> Remove rejected category
+--> Add toggle to show archive 
+--> Twice as wide 

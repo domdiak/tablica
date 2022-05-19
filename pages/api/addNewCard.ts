@@ -18,6 +18,5 @@ export default validateRoute(async (req, res, user) => {
         res.status(200).json(addCard);
     } catch (error) {
         res.status(400).json();
-        console.log("Error", error);
     }
 });
