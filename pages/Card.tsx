@@ -1,19 +1,12 @@
 import { Box } from "@chakra-ui/layout";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
-import { useRouter } from "next/router";
-import fetcher from "../lib/fetcher";
 import ModalEditCard from "./ModalEditCard";
+import CardDropdown from "./CardDropdown";
 
 const Card = ({ card, index }) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
-    const router = useRouter();
     resetServerContext();
-
-    const handleDeleteCard = async (data) => {
-        await fetcher("/deleteCard", { cardId: data });
-        router.reload();
-    };
 
     return (
         <Box>
@@ -30,18 +23,13 @@ const Card = ({ card, index }) => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
-                        onClick={onOpen}
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            // onOpen();
+                        }}
                     >
                         {card.title} // {card.categoryId}
-                        <Button
-                            onClick={(e) => {
-                                e.stopPropagation();
-                                handleDeleteCard(card.id);
-                            }}
-                        >
-                            {" "}
-                            Delete{" "}
-                        </Button>
+                        <CardDropdown card={card} onOpen={onOpen} />
                     </Box>
                 )}
             </Draggable>

@@ -12,10 +12,10 @@ const NavBar = () => {
                         {" "}
                         Kanban App{" "}
                     </Heading>
-                    <Button leftIcon={<AddIcon />} colorScheme="teal">
+                    {/* <Button leftIcon={<AddIcon />} colorScheme="teal">
                         {" "}
                         Add Role
-                    </Button>
+                    </Button> */}
                     <Button colorScheme="teal"> Logout</Button>
                     <Button colorScheme="teal">Home</Button>
                 </Stack>

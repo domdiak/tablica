@@ -1,7 +1,6 @@
 import { Box } from "@chakra-ui/layout";
 import { Button } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
-import { Droppable, resetServerContext } from "react-beautiful-dnd";
 import Card from "./Card";
 import CatDropdown from "./CatDropdown";
 
@@ -17,7 +16,7 @@ const CategoryColumn = ({ category, provided, onOpen, isOpen }) => {
         >
             {category.name}
             {category.id}
-            <CatDropdown />
+            <CatDropdown category={category} />
             {category.cards.map((card, index) => (
                 <Card card={card} key={card.id} index={index} />
             ))}

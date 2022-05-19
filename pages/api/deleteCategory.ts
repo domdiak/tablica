@@ -4,13 +4,22 @@ import { validateRoute } from "../../lib/auth";
 export default validateRoute(async (req, res, user) => {
     try {
         const { categoryId } = req.body;
-        const addCard = await prisma.category.delete({
+
+        console.log("server side", categoryId);
+
+        const deleteCards = await prisma.card.deleteMany({
             where: {
-                id: cardId,
+                categoryId,
             },
         });
 
-        res.status(200).json(addCard);
+        const deleteCategory = await prisma.category.delete({
+            where: {
+                id: categoryId,
+            },
+        });
+
+        res.status(200).json(deleteCategory, deleteCards);
     } catch (error) {
         res.status(400).json();
         console.log("Error", error);
