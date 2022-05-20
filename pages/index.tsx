@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { Flex } from "@chakra-ui/layout";
-import { useDisclosure, Button } from "@chakra-ui/react";
+import { useDisclosure, Button, useBoolean } from "@chakra-ui/react";
 import { Droppable } from "react-beautiful-dnd";
 import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
+import { Switch } from "@chakra-ui/react";
 import CategoryColumn from "./CategoryColumn";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
@@ -13,6 +14,7 @@ import AddCatModal from "./AddCatModal";
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
     const { isOpen, onClose, onOpen } = useDisclosure();
+    const [showArchive, setShowArchive] = useBoolean(false);
 
     const {
         isOpen: isOpenAddCatModal,
@@ -27,6 +29,8 @@ const Home = ({ categoriesData }) => {
             }),
         { ssr: false }
     );
+
+    console.log({ showArchive });
 
     const updateCard = async (cardId, categoryId) => {
         const data = { cardId, categoryId };
@@ -103,6 +107,7 @@ const Home = ({ categoriesData }) => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Button onClick={onOpenAddCatModal}> Add Category</Button>
+            <Switch onChange={setShowArchive.toggle}>Show Archive </Switch>
             {isOpen && (
                 <AddCardModal
                     isOpen={isOpen}
@@ -117,20 +122,46 @@ const Home = ({ categoriesData }) => {
                 />
             )}
             <Flex direction="row">
-                {categories.map((category, index) => (
-                    <Droppable droppableId={category.name} key={category.id}>
-                        {(provided) => (
-                            <CategoryColumn
-                                category={category}
+                {!showArchive &&
+                    categories
+                        .filter((category) => category.name !== "Archived")
+                        .map((category, index) => (
+                            <Droppable
+                                droppableId={category.name}
                                 key={category.id}
-                                index={index}
-                                provided={provided}
-                                onOpen={onOpen}
-                                isOpen={isOpen}
-                            />
-                        )}
-                    </Droppable>
-                ))}
+                            >
+                                {(provided) => (
+                                    <CategoryColumn
+                                        category={category}
+                                        key={category.id}
+                                        index={index}
+                                        provided={provided}
+                                        onOpen={onOpen}
+                                        isOpen={isOpen}
+                                        showArchive={showArchive}
+                                    />
+                                )}
+                            </Droppable>
+                        ))}
+                {showArchive &&
+                    categories.map((category, index) => (
+                        <Droppable
+                            droppableId={category.name}
+                            key={category.id}
+                        >
+                            {(provided) => (
+                                <CategoryColumn
+                                    category={category}
+                                    key={category.id}
+                                    index={index}
+                                    provided={provided}
+                                    onOpen={onOpen}
+                                    isOpen={isOpen}
+                                    showArchive={showArchive}
+                                />
+                            )}
+                        </Droppable>
+                    ))}
             </Flex>
         </DragDropContext>
     );

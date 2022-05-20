@@ -1,18 +1,13 @@
 import { Box } from "@chakra-ui/layout";
 import { Button, useDisclosure } from "@chakra-ui/react";
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
-import ModalEditCard from "./ModalEditCard";
 import CardDropdown from "./CardDropdown";
 
 const Card = ({ card, index }) => {
-    const { isOpen, onClose, onOpen } = useDisclosure();
     resetServerContext();
 
     return (
         <Box>
-            {isOpen && (
-                <ModalEditCard isOpen={isOpen} onClose={onClose} card={card} />
-            )}
             <Draggable draggableId={card.title} index={index}>
                 {(provided) => (
                     <Box
@@ -29,7 +24,7 @@ const Card = ({ card, index }) => {
                         }}
                     >
                         {card.title} // {card.categoryId}
-                        <CardDropdown card={card} onOpen={onOpen} />
+                        <CardDropdown card={card} />
                     </Box>
                 )}
             </Draggable>

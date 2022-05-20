@@ -53,6 +53,27 @@ export const cardsData = [
         userId: 1,
         categoryId: 3,
     },
+    {
+        title: "Role 7",
+        description: "Company 7",
+        link: "www.idk.com",
+        userId: 1,
+        categoryId: 3,
+    },
+    {
+        title: "Role 8",
+        description: "Company 8",
+        link: "www.idk.com",
+        userId: 1,
+        categoryId: 4,
+    },
+    {
+        title: "Role 9",
+        description: "Company 9",
+        link: "www.idk.com",
+        userId: 1,
+        categoryId: 4,
+    },
 ];
 
 export const categoryData = [
@@ -66,6 +87,14 @@ export const categoryData = [
     },
     {
         name: "Interview",
+        userId: 1,
+    },
+    {
+        name: "Rejected",
+        userId: 1,
+    },
+    {
+        name: "Archived",
         userId: 1,
     },
 ];
