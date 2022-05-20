@@ -1,15 +1,13 @@
 import { useState } from "react";
-import { Flex } from "@chakra-ui/layout";
 import { useDisclosure, Button, useBoolean } from "@chakra-ui/react";
-import { Droppable } from "react-beautiful-dnd";
 import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
 import { Switch } from "@chakra-ui/react";
-import CategoryColumn from "./CategoryColumn";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
 import AddCardModal from "./AddCardModal";
 import AddCatModal from "./AddCatModal";
+import Board from "./Board";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
@@ -119,48 +117,12 @@ const Home = ({ categoriesData }) => {
                     onClose={onCloseAddCatModal}
                 />
             )}
-            <Flex direction="row">
-                {!showArchive &&
-                    categories
-                        .filter((category) => category.name !== "Archived")
-                        .map((category, index) => (
-                            <Droppable
-                                droppableId={category.name}
-                                key={category.id}
-                            >
-                                {(provided) => (
-                                    <CategoryColumn
-                                        category={category}
-                                        key={category.id}
-                                        index={index}
-                                        provided={provided}
-                                        onOpen={onOpen}
-                                        isOpen={isOpen}
-                                        showArchive={showArchive}
-                                    />
-                                )}
-                            </Droppable>
-                        ))}
-                {showArchive &&
-                    categories.map((category, index) => (
-                        <Droppable
-                            droppableId={category.name}
-                            key={category.id}
-                        >
-                            {(provided) => (
-                                <CategoryColumn
-                                    category={category}
-                                    key={category.id}
-                                    index={index}
-                                    provided={provided}
-                                    onOpen={onOpen}
-                                    isOpen={isOpen}
-                                    showArchive={showArchive}
-                                />
-                            )}
-                        </Droppable>
-                    ))}
-            </Flex>
+            <Board
+                showArchive={showArchive}
+                categories={categories}
+                onOpen={onOpen}
+                isOpen={isOpen}
+            />
         </DragDropContext>
     );
 };
