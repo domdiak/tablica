@@ -1,24 +1,31 @@
---> When user doesn't exist, the loading doesn't end 
---> Add archive on clicking delete 
---> Modal for deleting 
+--> When user doesn't exist, the loading doesn't end
+--> Add archive on clicking delete
+--> Modal for deleting
+--> Fix the weird rendering issues
+--> Add Edit name for category
 
+Comments:
+--> Comments component
+--> Add a new comment at the bottom
+--> Upload a file?
 
+UI:
 
-Category:
----> Options: 
-    ---> Edit name
-    ---> Delete Category
+1. NavBar:
+   -> Add logo
+   -> Move buttons to the right
+   -> Make the buttons work
 
-Cards: 
----> Options:
-    ---> Edit
-    ---> Delete
-    -> archive
+2. Main sections:
+   -> Move Add category button to the navbar
+   --> Move Show Archive to the Navbar
 
---> Click: 
-    ---> Comments modal
-
-Archive:
---> Remove rejected category
---> Add toggle to show archive 
---> Twice as wide 
+Board:
+--> Work on colours changing as you move things
+--> Add settings button to the top right of each category
+--> Lock Add Card button to the bottom of ach category
+--> Improve display on the cards
+--> Make the columns responsive
+--> Change size of the columsn if archive is displayed
+--> Increase size of Archive category
+--> Display two cards at once in the archive category

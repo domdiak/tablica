@@ -22,19 +22,31 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
         router.reload();
     };
 
+    const updateCard = async (cardId, categoryId) => {
+        const data = { cardId, categoryId };
+        fetcher("/updateCard", data);
+    };
+
     return (
         <Menu>
             {isOpen && (
                 <ModalEditCard isOpen={isOpen} onClose={onClose} card={card} />
             )}
             <MenuButton as={IconButton} icon={<HamburgerIcon />}>
-                Click here...
+                Click here. ..
             </MenuButton>
             <MenuList>
                 <MenuItem icon={<EditIcon />} onClick={onOpen}>
                     Edit
                 </MenuItem>
-                <MenuItem icon={<EditIcon />}>Archive</MenuItem>
+                <MenuItem
+                    icon={<EditIcon />}
+                    onClick={() => {
+                        updateCard(card.id, 5);
+                    }}
+                >
+                    Archive
+                </MenuItem>
                 <MenuItem
                     icon={<DeleteIcon />}
                     onClick={(e) => {

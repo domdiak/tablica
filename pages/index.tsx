@@ -30,8 +30,6 @@ const Home = ({ categoriesData }) => {
         { ssr: false }
     );
 
-    console.log({ showArchive });
-
     const updateCard = async (cardId, categoryId) => {
         const data = { cardId, categoryId };
         fetcher("/updateCard", data);
