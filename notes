@@ -1,5 +1,4 @@
 --> When user doesn't exist, the loading doesn't end
---> Add archive on clicking delete
 --> Modal for deleting
 --> Fix the weird rendering issues
 --> Add Edit name for category

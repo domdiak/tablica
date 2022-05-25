@@ -11,7 +11,7 @@ const Card = ({ card, index }) => {
             <Draggable draggableId={card.title} index={index}>
                 {(provided) => (
                     <Box
-                        width="150px"
+                        width="90%"
                         height="200px"
                         bg="lightpink"
                         margin="5px"

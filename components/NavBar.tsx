@@ -1,6 +1,7 @@
-import { Box, Heading } from "@chakra-ui/layout";
+import { Box } from "@chakra-ui/layout";
+import Image from "next/image";
 import { Button, ButtonGroup, Stack } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
+import Logo from "./Logo";
 
 const NavBar = () => {
     return (
@@ -8,14 +9,7 @@ const NavBar = () => {
             {" "}
             <Box paddingY="5px" paddingX="10px">
                 <Stack spacing={4} direction="row" align="left">
-                    <Heading width="200px" size="md">
-                        {" "}
-                        Kanban App{" "}
-                    </Heading>
-                    {/* <Button leftIcon={<AddIcon />} colorScheme="teal">
-                        {" "}
-                        Add Role
-                    </Button> */}
+                    <Logo />
                     <Button colorScheme="teal"> Logout</Button>
                     <Button colorScheme="teal">Home</Button>
                 </Stack>

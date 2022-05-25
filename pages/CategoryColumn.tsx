@@ -6,27 +6,26 @@ import CatDropdown from "./CatDropdown";
 
 const CategoryColumn = ({ category, provided, onOpen, showArchive }) => {
     return (
-        <Box>
-            <Box
-                width="200px"
-                height="600px"
-                bg="lightgrey"
-                margin="20px"
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-            >
-                {category.name}
-                {category.id}
-                <CatDropdown category={category} />
-                {category.cards.map((card, index) => (
-                    <Card card={card} key={card.id} index={index} />
-                ))}
-                {provided.placeholder}
-                <Button onClick={onOpen}>
-                    {" "}
-                    <AddIcon />{" "}
-                </Button>
-            </Box>
+        <Box
+            basis="25%"
+            minWidth="250px"
+            height="600px"
+            bg="lightgrey"
+            margin="20px"
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+        >
+            {category.name}
+            {category.id}
+            <CatDropdown category={category} />
+            {category.cards.map((card, index) => (
+                <Card card={card} key={card.id} index={index} />
+            ))}
+            {provided.placeholder}
+            <Button onClick={onOpen}>
+                {" "}
+                <AddIcon />{" "}
+            </Button>
         </Box>
     );
 };
