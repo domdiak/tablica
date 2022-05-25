@@ -3,6 +3,7 @@
 --> Fix the weird rendering issues
 --> Add Edit name for category
 --> Remove 'category' dropdown from add card
+--> Removed AddCard from archive
 
 Comments:
 --> Comments component
@@ -38,10 +39,10 @@ Dzisiaj:
 --> Make the settings button nicer DONE
 --> Clean up the category name on the top DONE  
  --> Lock the Add Button to the bottom of each column DONE
---> Make the columns scroll if size of cards of bigger than the column
+--> Make the columns scroll if size of cards of bigger than the column DONE
 --> Add colors on drag&drop events
 
 Cards:
---> Move the settings button to the right and make nicer
---> Clean up the dislpay: Company name, Role name
---> Add external link button which takes you straight to the job add
+--> Move the settings button to the right and make nicer DONE
+--> Clean up the dislpay: Company name, Role name DONE
+--> Add external link button which takes you straight to the job add DONE

@@ -9,10 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
 
 import CardDropdown from "./CardDropdown";
 
 const Card = ({ card, index }) => {
+    const router = useRouter();
     resetServerContext();
 
     return (
@@ -49,6 +51,9 @@ const Card = ({ card, index }) => {
                                 aria-label="See the job ad"
                                 size="sm"
                                 icon={<ExternalLinkIcon />}
+                                onClick={() =>
+                                    router.push(`http://${card.Link}`)
+                                }
                             >
                                 {" "}
                             </IconButton>
