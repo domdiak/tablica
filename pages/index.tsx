@@ -102,8 +102,6 @@ const Home = ({ categoriesData }) => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            <Button onClick={onOpenAddCatModal}> Add Category</Button>
-            <Switch onChange={setShowArchive.toggle}>Show Archive </Switch>
             {isOpen && (
                 <AddCardModal
                     isOpen={isOpen}
@@ -123,6 +121,8 @@ const Home = ({ categoriesData }) => {
                 onOpen={onOpen}
                 isOpen={isOpen}
             />
+            <Button onClick={onOpenAddCatModal}> Add Category</Button>
+            <Switch onChange={setShowArchive.toggle}>Show Archive </Switch>
         </DragDropContext>
     );
 };

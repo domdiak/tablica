@@ -4,7 +4,7 @@ import CategoryColumn from "./CategoryColumn";
 
 const Board = ({ showArchive, categories, onOpen, isOpen }) => {
     return (
-        <Flex justify="space-evenly">
+        <Flex justify="space-evenly" marginY="20px">
             {!showArchive &&
                 categories
                     .filter((category) => category.name !== "Archived")
