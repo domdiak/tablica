@@ -7,12 +7,13 @@ import CatDropdown from "./CatDropdown";
 const CategoryColumn = ({ category, provided, onOpen }) => {
     return (
         <Box
-            basis="25%"
-            minWidth="250px"
+            basis="30%"
+            minWidth="300px"
             height="600px"
             bg="lightgrey"
             margin="20px"
             position="relative"
+            overflowY="auto"
             ref={provided.innerRef}
             {...provided.droppableProps}
         >
@@ -21,16 +22,18 @@ const CategoryColumn = ({ category, provided, onOpen }) => {
                 <Spacer />
                 <CatDropdown category={category} />
             </Flex>
-            {category.cards.map((card, index) => (
-                <Card card={card} key={card.id} index={index} />
-            ))}
-            {provided.placeholder}
+            <Flex direction="column" justify="center">
+                {category.cards.map((card, index) => (
+                    <Card card={card} key={card.id} index={index} />
+                ))}
+                {provided.placeholder}
+            </Flex>
 
             <Button
                 onClick={onOpen}
                 leftIcon={<AddIcon />}
                 position="absolute"
-                bottom="10px"
+                bottom="1rem"
                 width="90%"
                 marginX="10px"
             >

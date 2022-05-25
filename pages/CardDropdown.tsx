@@ -32,7 +32,7 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
             {isOpen && (
                 <ModalEditCard isOpen={isOpen} onClose={onClose} card={card} />
             )}
-            <MenuButton as={IconButton} icon={<HamburgerIcon />}>
+            <MenuButton size="sm" as={IconButton} icon={<HamburgerIcon />}>
                 Click here. ..
             </MenuButton>
             <MenuList>

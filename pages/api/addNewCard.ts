@@ -2,8 +2,8 @@ import prisma from "../../lib/prisma";
 import { validateRoute } from "../../lib/auth";
 
 export default validateRoute(async (req, res, user) => {
+    console.log("req.body in addNewCard", req.body);
     try {
-        console.log("req.body in addNewCard", req.body);
         const { title, description, link, categoryId } = req.body;
         const addCard = await prisma.card.create({
             data: {
