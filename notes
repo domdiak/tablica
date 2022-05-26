@@ -1,9 +1,6 @@
 --> When user doesn't exist, the loading doesn't end
 --> Modal for deleting
 --> Fix the weird rendering issues
---> Add Edit name for category
---> Remove 'category' dropdown from add card
---> Removed AddCard from archive
 
 Comments:
 --> Comments component
@@ -32,17 +29,14 @@ Board:
 --> Display two cards at once in the archive category
 
 Dzisiaj:
---> NavBar:
---> Move buttons to the right DONE
---> Add some shitty logo DONE
---> Board:
---> Make the settings button nicer DONE
---> Clean up the category name on the top DONE  
- --> Lock the Add Button to the bottom of each column DONE
---> Make the columns scroll if size of cards of bigger than the column DONE
+--> Set up color palette
 --> Add colors on drag&drop events
-
-Cards:
---> Move the settings button to the right and make nicer DONE
---> Clean up the dislpay: Company name, Role name DONE
---> Add external link button which takes you straight to the job add DONE
+--> Fix login page DONE
+--> Fix registration page DONE
+--> Add error messages
+--> Add form validation to submit forms in the app
+--> Make buttons on the NavBar work
+--> Removed AddCard from archive
+--> Add Edit name for category
+--> Confirmation modal for deleting
+--> Make logout button work
