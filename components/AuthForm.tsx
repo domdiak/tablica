@@ -1,8 +1,18 @@
-import { Box, Flex, Input, Button } from "@chakra-ui/react";
+import {
+    Box,
+    Flex,
+    Input,
+    Button,
+    Stack,
+    FormControl,
+    FormLabel,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import Link from "next/link";
+import Logo from "./Logo";
 import { auth } from "../lib/mutations";
+import { getPrismaClient } from "@prisma/client/runtime";
 
 const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
     const [email, setEmail] = useState("");
@@ -23,37 +33,49 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
     };
 
     return (
-        <Box height="100vh" width="100vw" bg="lightgrey">
-            <Flex justify="center" align="center" height="100px">
-                Logo
-            </Flex>
-            <Flex justify="center" align="center" height="calc(100vh - 100px">
+        <Flex minH="100vh" align="center" justify="center" bg="white">
+            <Stack spacing={8} mx="auto" maxW="lg" py="12" px="6">
+                <Stack align="center">
+                    <Logo />
+                </Stack>
                 <Box
                     padding="50px"
-                    bg="gray.900"
+                    rounded="lg"
                     borderRadius="6px"
+                    boxShadow="lg"
                     data-cy="signin-form"
                 >
-                    <form onSubmit={handleSubmit}>
-                        <Input
-                            placeholder="email"
-                            type="email"
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <Input
-                            placeholder="password"
-                            type="password"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                        <Button
-                            type="submit"
-                            bg="green.500"
-                            isLoading={isLoading}
-                        >
-                            {" "}
-                            Signin{" "}
-                        </Button>
-                    </form>
+                    <Stack spacing="4">
+                        <form onSubmit={handleSubmit}>
+                            <FormControl id="email">
+                                <FormLabel> Email address </FormLabel>
+                                <Input
+                                    placeholder="email"
+                                    type="email"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                />
+                            </FormControl>
+                            <FormControl>
+                                <FormLabel> Password </FormLabel>
+                                <Input
+                                    placeholder="password"
+                                    type="password"
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
+                                />
+                            </FormControl>
+                            <Button
+                                type="submit"
+                                bg="gray.400"
+                                _hover={{ bg: "gray.500" }}
+                                isLoading={isLoading}
+                            >
+                                {" "}
+                                Signin{" "}
+                            </Button>
+                        </form>
+                    </Stack>
                     {mode === "signin" && (
                         <Box data-cy="1">
                             {" "}
@@ -62,8 +84,8 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                         </Box>
                     )}
                 </Box>
-            </Flex>
-        </Box>
+            </Stack>
+        </Flex>
     );
 };
 
