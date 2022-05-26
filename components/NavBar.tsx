@@ -1,11 +1,12 @@
 import { Box } from "@chakra-ui/layout";
 import { Button, Stack, Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { AddIcon } from "@chakra-ui/icons";
-import { Switch } from "@chakra-ui/react";
-import { useState } from "react";
 import Logo from "./Logo";
 
 const NavBar = () => {
+    const router = useRouter();
+
     return (
         <Box height="70px" border="solid 1px">
             {" "}
@@ -18,7 +19,13 @@ const NavBar = () => {
                                 Add Category
                             </Button>
                             <Button colorScheme="teal">Show Archive</Button>
-                            <Button colorScheme="teal"> Logout</Button>
+                            <Button
+                                colorScheme="teal"
+                                onClick={() => router.push("/logout")}
+                            >
+                                {" "}
+                                Logout{" "}
+                            </Button>
                             <Button colorScheme="teal">Home</Button>
                         </Stack>
                     </Flex>

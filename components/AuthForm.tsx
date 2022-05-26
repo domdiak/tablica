@@ -7,18 +7,20 @@ import {
     FormControl,
     FormLabel,
     FormErrorMessage,
+    Alert,
+    AlertIcon,
+    AlertTitle,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
-import Logo from "./Logo";
 import { auth } from "../lib/mutations";
+import Logo from "./Logo";
 
 const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
     const router = useRouter();
     const {
         register,
@@ -26,22 +28,15 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
         formState: { errors },
     } = useForm();
 
-    // console.log({ email });
-    // console.log({ password });
+    const onSubmit = async (values) => {
+        console.log({ values });
+        setIsLoading(true);
 
-    // const handleSubmit = async (e) => {
-    //     e.preventDefault();
-    //     setIsLoading(true);
-
-    //     await auth(mode, { email, password });
-    //     setIsLoading(false);
-    //     router.push("/");
-    // };
-
-    console.log({ errors });
-    const isError = password === "";
-
-    const onSubmit = (data) => console.log("data", data);
+        const res = await auth(mode, values);
+        setError(res.error);
+        setIsLoading(false);
+        router.push("/");
+    };
 
     return (
         <Flex minH="100vh" align="center" justify="center" bg="gray.200">
@@ -57,16 +52,21 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                     data-cy="signin-form"
                 >
                     <Stack spacing="4">
+                        {error && (
+                            <Alert status="error">
+                                <AlertIcon />
+                                <AlertTitle> {error} </AlertTitle>
+                            </Alert>
+                        )}
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <FormControl id="email" isInvalid={errors.password}>
                                 <FormLabel> Email address </FormLabel>
                                 <Input
                                     placeholder="email"
-                                    type="text"
+                                    type="email"
                                     {...register("email", {
                                         required: "Required field",
                                     })}
-                                    onChange={(e) => setEmail(e.target.value)}
                                 />
                                 {errors.email?.message && (
                                     <FormErrorMessage>
@@ -88,9 +88,6 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                                                 "Min length is 3 characters",
                                         },
                                     })}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
                                 />
                                 {errors.password?.message && (
                                     <FormErrorMessage>

@@ -1,40 +1,19 @@
 --> When user doesn't exist, the loading doesn't end
 --> Modal for deleting
 --> Fix the weird rendering issues
-
-Comments:
---> Comments component
---> Add a new comment at the bottom
---> Upload a file?
+--> Add catch-all route
+--> Feed only data from the logged in user (lol)
 
 UI:
-
-1. NavBar:
-   -> Add logo
-   -> Move buttons to the right
-   -> Make the buttons work
-
-2. Main sections:
-   -> Move Add category button to the navbar
-   --> Move Show Archive to the Navbar
-
-Board:
---> Work on colours changing as you move things
---> Add settings button to the top right of each category
---> Lock Add Card button to the bottom of ach category
---> Improve display on the cards
---> Make the columns responsive
---> Change size of the columsn if archive is displayed
---> Increase size of Archive category
---> Display two cards at once in the archive category
+the buttons work
 
 Dzisiaj:
 --> Set up color palette
 --> Add colors on drag&drop events
 --> Fix login page DONE
 --> Fix registration page DONE
+--> Add form validation to submit forms in the app DONE
 --> Add error messages
---> Add form validation to submit forms in the app
 --> Make buttons on the NavBar work
 --> Removed AddCard from archive
 --> Add Edit name for category

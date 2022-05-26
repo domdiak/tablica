@@ -12,8 +12,6 @@ const CategoryColumn = ({ category, provided, onOpen }) => {
             height="600px"
             bg="lightgrey"
             margin="20px"
-            // position="relative"
-
             ref={provided.innerRef}
             {...provided.droppableProps}
             direction="column"
@@ -41,7 +39,6 @@ const CategoryColumn = ({ category, provided, onOpen }) => {
             <Button
                 onClick={onOpen}
                 leftIcon={<AddIcon />}
-                // position="absolute"
                 bottom="1rem"
                 width="90%"
                 marginX="10px"
