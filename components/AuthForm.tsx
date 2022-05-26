@@ -1,7 +1,6 @@
 import { Box, Flex, Input, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
-import { useSWRConfig } from "swr";
 import Link from "next/link";
 import { auth } from "../lib/mutations";
 

@@ -23,7 +23,7 @@ const Card = ({ card, index }) => {
                 {(provided) => (
                     <Grid
                         width="90%"
-                        height="30%"
+                        height="90px"
                         bg="lightpink"
                         margin="10px"
                         padding="5px"
@@ -47,16 +47,22 @@ const Card = ({ card, index }) => {
                             <Heading size="sm"> {card.title} </Heading>
                         </GridItem>
                         <GridItem justifySelf="end" margin="2px">
-                            <IconButton
-                                aria-label="See the job ad"
-                                size="sm"
-                                icon={<ExternalLinkIcon />}
-                                onClick={() =>
-                                    router.push(`http://${card.Link}`)
-                                }
+                            <a
+                                href={`http://${card.link}`}
+                                target="_blank"
+                                rel="noreferrer"
                             >
-                                {" "}
-                            </IconButton>
+                                <IconButton
+                                    aria-label="See the job ad"
+                                    size="sm"
+                                    icon={<ExternalLinkIcon />}
+                                    // onClick={() =>
+                                    //     router.push(`http://${card.link}`)
+                                    // }
+                                >
+                                    {" "}
+                                </IconButton>
+                            </a>
                         </GridItem>
                     </Grid>
                 )}
