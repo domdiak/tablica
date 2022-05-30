@@ -12,6 +12,7 @@ import React from "react";
 import fetcher from "../lib/fetcher";
 import ModalEditCard from "./ModalEditCard";
 import ModalWindow from "../components/Modal";
+import { BsFillArchiveFill } from "react-icons/bs";
 
 const CatDropdown: React.FunctionComponent = ({ card }) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
@@ -54,9 +55,10 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
                 </MenuItem>
                 {card.categoryId !== 5 && (
                     <MenuItem
-                        icon={<EditIcon />}
+                        icon={<BsFillArchiveFill />}
                         onClick={() => {
                             updateCard(card.id, 5);
+                            router.reload();
                         }}
                     >
                         Archive

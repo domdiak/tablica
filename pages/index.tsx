@@ -2,7 +2,6 @@ import { useState, useReducer } from "react";
 import { useDisclosure, Button, useBoolean } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
-import { Switch } from "@chakra-ui/react";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
 import AddCardModal from "./AddCardModal";
@@ -11,7 +10,6 @@ import Board from "./Board";
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
     const { isOpen, onClose, onOpen } = useDisclosure();
-    const [showArchive, setShowArchive] = useBoolean(false);
 
     const DragDropContext = dynamic(
         () =>
@@ -103,13 +101,11 @@ const Home = ({ categoriesData }) => {
                 />
             )}
             <Board
-                showArchive={showArchive}
+                // showArchive={showArchive}
                 categories={categories}
                 onOpen={onOpen}
                 isOpen={isOpen}
             />{" "}
-            Test Button
-            <Switch onChange={setShowArchive.toggle}>Show Archive </Switch>
         </DragDropContext>
     );
 };

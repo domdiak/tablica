@@ -1,8 +1,13 @@
 import { Flex } from "@chakra-ui/layout";
+import { Button, useBoolean } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
+import { BsFillArchiveFill } from "react-icons/bs";
 import { Droppable } from "react-beautiful-dnd";
 import CategoryColumn from "./CategoryColumn";
 
-const Board = ({ showArchive, categories, onOpen, isOpen }) => {
+const Board = ({ categories, onOpen, isOpen }) => {
+    const [showArchive, setShowArchive] = useBoolean(false);
+
     return (
         <Flex justify="space-evenly" marginY="20px">
             {!showArchive &&
@@ -42,6 +47,16 @@ const Board = ({ showArchive, categories, onOpen, isOpen }) => {
                         )}
                     </Droppable>
                 ))}
+            <Button
+                height="600px"
+                margin="10px"
+                borderRadius="10px"
+                bg="lightblue"
+                onClick={setShowArchive.toggle}
+            >
+                {" "}
+                <BsFillArchiveFill size="30px" />{" "}
+            </Button>
         </Flex>
     );
 };

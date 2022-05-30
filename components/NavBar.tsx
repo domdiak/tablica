@@ -25,7 +25,6 @@ const NavBar = () => {
                             >
                                 Add Category
                             </Button>
-                            <Button colorScheme="teal">Show Archive</Button>
                             <Button
                                 colorScheme="teal"
                                 onClick={() => fetcher("/logout")}
