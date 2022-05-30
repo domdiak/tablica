@@ -73,7 +73,7 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button type="submit" form="edit-card">
+                    <Button type="submit" variant="primary" form="edit-card">
                         {" "}
                         Make changes{" "}
                     </Button>

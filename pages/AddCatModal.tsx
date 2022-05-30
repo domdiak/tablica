@@ -64,11 +64,19 @@ const AddCatModal = ({ isOpen, onClose }) => {
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button type="submit" form="add-card">
+                    <Button
+                        variant="primary"
+                        type="submit"
+                        form="add-card"
+                        margin="5px"
+                    >
                         {" "}
                         Add{" "}
                     </Button>
-                    <Button onClick={onClose}> Close </Button>
+                    <Button variant="primary" onClick={onClose} margin="5px">
+                        {" "}
+                        Close{" "}
+                    </Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

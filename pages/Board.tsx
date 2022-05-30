@@ -21,12 +21,13 @@ const Board = ({ categories, onOpen, isOpen }) => {
                 .sort((a, b) => (a.name === "Archived" ? 1 : -1))
                 .map((category, index) => (
                     <Droppable droppableId={category.name} key={category.id}>
-                        {(provided) => (
+                        {(provided, snapshot) => (
                             <CategoryColumn
                                 category={category}
                                 key={category.id}
                                 index={index}
                                 provided={provided}
+                                snapshot={snapshot}
                                 onOpen={onOpen}
                                 isOpen={isOpen}
                                 showArchive={showArchive}

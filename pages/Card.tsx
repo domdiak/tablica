@@ -20,11 +20,10 @@ const Card = ({ card, index }) => {
     return (
         <Box>
             <Draggable draggableId={card.title} index={index}>
-                {(provided) => (
+                {(provided, snapshot) => (
                     <Grid
                         width="90%"
                         height="90px"
-                        bg="main.300"
                         margin="10px"
                         padding="5px"
                         borderRadius="10px"
@@ -34,21 +33,18 @@ const Card = ({ card, index }) => {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
-                        onClick={(e) => {
-                            e.stopPropagation();
-                            // onOpen();
-                        }}
+                        bg={snapshot.isDragging ? "main.500" : "main.300"}
                     >
-                        <GridItem>
+                        <GridItem margin="5px">
                             <Heading size="md"> {card.description} </Heading>
                         </GridItem>
-                        <GridItem justifySelf="end" margin="2px">
+                        <GridItem justifySelf="end" margin="5px">
                             <CardDropdown card={card} />
                         </GridItem>
-                        <GridItem>
+                        <GridItem margin="5px">
                             <Heading size="sm"> {card.title} </Heading>
                         </GridItem>
-                        <GridItem justifySelf="end" margin="2px">
+                        <GridItem justifySelf="end" margin="5px">
                             <a
                                 href={`http://${card.link}`}
                                 target="_blank"

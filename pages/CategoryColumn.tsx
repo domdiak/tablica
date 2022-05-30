@@ -5,19 +5,20 @@ import Card from "./Card";
 import CatDropdown from "./CatDropdown";
 import CategoryName from "../components/CategoryName";
 
-const CategoryColumn = ({ category, provided, onOpen }) => {
+const CategoryColumn = ({ category, provided, onOpen, snapshot }) => {
     return (
         <Flex
             basis="30%"
             minWidth="300px"
             height="600px"
-            bg="main.100"
+            // bg="main.100"
             margin="10px"
             borderRadius="10px"
             ref={provided.innerRef}
             {...provided.droppableProps}
             direction="column"
             justifyContent="space-between"
+            bg={snapshot.isDraggingOver ? "main.200" : "main.100"}
         >
             <div>
                 <Flex margin="5px" justify="space-between">
