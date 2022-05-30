@@ -7,10 +7,15 @@ import {
     EditableInput,
     Input,
     Flex,
+    useEditableControls,
+    IconButton,
 } from "@chakra-ui/react";
+import { useState } from "react";
 import EditableControls from "./EditableControls";
 
 const CategoryName = ({ category }) => {
+    const [input, setInput] = useState(category.name);
+
     return (
         <Box>
             <Editable
@@ -21,8 +26,14 @@ const CategoryName = ({ category }) => {
             >
                 <EditablePreview />
                 <Flex width="60%">
-                    <Input as={EditableInput} fontSize="3xl" />
-                    <EditableControls />
+                    <Input
+                        as={EditableInput}
+                        fontSize="3xl"
+                        onChange={(e) => {
+                            setInput(e.target.value);
+                        }}
+                    />
+                    <EditableControls input={input} category={category} />
                 </Flex>
             </Editable>
             <Spacer />

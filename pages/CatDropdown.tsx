@@ -34,14 +34,7 @@ const CatDropdown: React.FunctionComponent = ({ category }) => {
             </MenuButton>
             <MenuList>
                 <MenuItem icon={<EditIcon />}>Edit Name</MenuItem>
-                <MenuItem
-                    icon={<DeleteIcon />}
-                    // onClick={(e) => {
-                    //     e.stopPropagation();
-                    //     handleDelete(category.id);
-                    // }}
-                    onClick={onOpen}
-                >
+                <MenuItem icon={<DeleteIcon />} onClick={onOpen}>
                     Delete Category
                 </MenuItem>
             </MenuList>
