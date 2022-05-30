@@ -7,11 +7,10 @@ import fetcher from "../lib/fetcher";
 import AddCatModal from "../pages/AddCatModal";
 
 const NavBar = () => {
-    const router = useRouter();
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     return (
-        <Box height="70px" border="solid 1px">
+        <Box height="70px">
             {isOpen && <AddCatModal isOpen={isOpen} onClose={onClose} />}{" "}
             <Box paddingY="5px" paddingX="10px">
                 <Flex h="16" alignItems="center" justify="space-between">
@@ -19,20 +18,20 @@ const NavBar = () => {
                     <Flex alignItems="center">
                         <Stack direction="row" spacing={7}>
                             <Button
-                                colorScheme="teal"
+                                variant="primary"
                                 leftIcon={<AddIcon />}
                                 onClick={onOpen}
                             >
                                 Add Category
                             </Button>
                             <Button
-                                colorScheme="teal"
+                                variant="primary"
                                 onClick={() => fetcher("/logout")}
                             >
                                 {" "}
                                 Logout{" "}
                             </Button>
-                            <Button colorScheme="teal">Home</Button>
+                            <Button variant="primary">Home</Button>
                         </Stack>
                     </Flex>
                 </Flex>

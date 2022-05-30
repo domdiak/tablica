@@ -6,12 +6,10 @@ import { useRouter } from "next/router";
 const EditableControls = ({ input, category }) => {
     const router = useRouter();
 
-    console.log("input1", input);
     const { isEditing, getSubmitButtonProps } = useEditableControls();
 
     const handleChange = async (name, id) => {
         const data = { name, id };
-        console.log("data", data);
 
         await fetcher("/editCategory", data);
         router.reload();

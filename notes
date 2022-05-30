@@ -7,14 +7,17 @@ Dzisiaj:
 
 --> Removed AddCard from archive DONE question here // queestion how they get rendered as well
 
---> Confirmation modal for deleting
---> API route for editing name
 --> Drag and Drop colours
 
---> Add modals!
---> Add Show Archive button
+--> Add Show Archive button DONE
 --> Archive always shows as the last one
 --> Set up color palette
 --> Add catch-all route
---> Updated Seed data
 --> Look into rendering p;lo
+
+New todo:
+--> Add loading page
+
+Pytania:
+
+--> Jak znalezc ten DB error

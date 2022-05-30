@@ -7,32 +7,19 @@ import CategoryColumn from "./CategoryColumn";
 
 const Board = ({ categories, onOpen, isOpen }) => {
     const [showArchive, setShowArchive] = useBoolean(false);
+    console.log({ categories });
 
     return (
         <Flex justify="space-evenly" marginY="20px">
-            {!showArchive &&
-                categories
-                    .filter((category) => category.name !== "Archived")
-                    .map((category, index) => (
-                        <Droppable
-                            droppableId={category.name}
-                            key={category.id}
-                        >
-                            {(provided) => (
-                                <CategoryColumn
-                                    category={category}
-                                    key={category.id}
-                                    index={index}
-                                    provided={provided}
-                                    onOpen={onOpen}
-                                    isOpen={isOpen}
-                                    showArchive={showArchive}
-                                />
-                            )}
-                        </Droppable>
-                    ))}
-            {showArchive &&
-                categories.map((category, index) => (
+            {categories
+                .filter((category) => {
+                    if (showArchive) {
+                        return true;
+                    }
+                    return category.name !== "Archived";
+                })
+                .sort((a, b) => (a.name === "Archived" ? 1 : -1))
+                .map((category, index) => (
                     <Droppable droppableId={category.name} key={category.id}>
                         {(provided) => (
                             <CategoryColumn
@@ -47,11 +34,12 @@ const Board = ({ categories, onOpen, isOpen }) => {
                         )}
                     </Droppable>
                 ))}
+
             <Button
+                variant="primary"
                 height="600px"
                 margin="10px"
                 borderRadius="10px"
-                bg="lightblue"
                 onClick={setShowArchive.toggle}
             >
                 {" "}

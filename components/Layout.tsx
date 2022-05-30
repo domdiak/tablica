@@ -9,6 +9,7 @@ const Layout = ({ children }) => {
             margin="0"
             padding="0"
             boxSizing="border-box"
+            bg="main.1000"
         >
             <Box position="absolute" width="100vw" top="0" left="0">
                 {" "}

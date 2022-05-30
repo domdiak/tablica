@@ -11,7 +11,7 @@ const CategoryColumn = ({ category, provided, onOpen }) => {
             basis="30%"
             minWidth="300px"
             height="600px"
-            bg="lightgrey"
+            bg="main.100"
             margin="10px"
             borderRadius="10px"
             ref={provided.innerRef}
@@ -40,6 +40,7 @@ const CategoryColumn = ({ category, provided, onOpen }) => {
             </div>
             {category.name !== "Archived" && (
                 <Button
+                    variant="primary"
                     onClick={onOpen}
                     leftIcon={<AddIcon />}
                     bottom="1rem"

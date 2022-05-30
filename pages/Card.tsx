@@ -24,7 +24,7 @@ const Card = ({ card, index }) => {
                     <Grid
                         width="90%"
                         height="90px"
-                        bg="lightpink"
+                        bg="main.300"
                         margin="10px"
                         padding="5px"
                         borderRadius="10px"

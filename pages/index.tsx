@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useState, useEffect } from "react";
 import { useDisclosure, Button, useBoolean } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { GetServerSideProps } from "next";
@@ -6,6 +6,7 @@ import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
 import AddCardModal from "./AddCardModal";
 import Board from "./Board";
+import { validateRoute } from "../lib/auth";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
@@ -21,8 +22,17 @@ const Home = ({ categoriesData }) => {
 
     const updateCard = async (cardId, categoryId) => {
         const data = { cardId, categoryId };
-        fetcher("/updateCard", data);
+        await fetcher("/updateCard", data);
     };
+
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const response = await fetcher("/category");
+    //         console.log({ response });
+    //         setCategories(response);
+    //     };
+    //     fetchData();
+    // }, []);
 
     const onDragEnd = (result) => {
         console.log("DnD event:", result);
@@ -86,8 +96,8 @@ const Home = ({ categoriesData }) => {
             newState[destinationColumnIndex] = newDestinationColumn;
             console.log({ newDestinationColumn });
 
-            setCategories(newState);
             updateCard(removedCard.id, newDestinationColumn.id);
+            setCategories(newState);
         }
     };
 
@@ -100,12 +110,7 @@ const Home = ({ categoriesData }) => {
                     categories={categories}
                 />
             )}
-            <Board
-                // showArchive={showArchive}
-                categories={categories}
-                onOpen={onOpen}
-                isOpen={isOpen}
-            />{" "}
+            <Board categories={categories} onOpen={onOpen} isOpen={isOpen} />{" "}
         </DragDropContext>
     );
 };

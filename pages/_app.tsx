@@ -4,25 +4,26 @@ import "reset-css";
 
 const theme = extendTheme({
     colors: {
-        gray: {
-            100: "#F5F5F5",
-            200: "#EEEEEE",
-            300: "E0E0E0",
-            400: "#BDBDBD",
-            500: "#9E9E9E",
-            600: "#757575",
-            700: "#616161",
-            800: "#424242",
-            900: "#212121",
+        main: {
+            100: "#CCDACF",
+            200: "#BCD3C0",
+            300: "#ACCCB1",
+            400: "#9CC5A1",
+            500: "#73B38D",
+            600: "#49A078",
+            700: "#358471",
+            800: "#2b766d",
+            900: "#216869",
+            1000: "#f1f1f1",
         },
     },
     components: {
         Button: {
             variants: {
-                Link: {
-                    ":focus": {
-                        outline: "none",
-                        boxShadow: "none",
+                primary: {
+                    bg: "main.500",
+                    _hover: {
+                        bg: "main.300",
                     },
                 },
             },
