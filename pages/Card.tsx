@@ -27,6 +27,8 @@ const Card = ({ card, index }) => {
                         bg="lightpink"
                         margin="10px"
                         padding="5px"
+                        borderRadius="10px"
+                        boxShadow="md"
                         templateRows="repeat(2, 1fr)"
                         templateColumns="3fr 1fr"
                         {...provided.draggableProps}

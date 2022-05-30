@@ -11,9 +11,15 @@ import { useRouter } from "next/router";
 import React from "react";
 import fetcher from "../lib/fetcher";
 import ModalEditCard from "./ModalEditCard";
+import ModalWindow from "../components/Modal";
 
 const CatDropdown: React.FunctionComponent = ({ card }) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
+    const {
+        isOpen: isOpenModal,
+        onClose: onCloseModal,
+        onOpen: onOpenModal,
+    } = useDisclosure();
 
     const router = useRouter();
 
@@ -29,6 +35,13 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
 
     return (
         <Menu>
+            {isOpenModal && (
+                <ModalWindow
+                    isOpen={isOpenModal}
+                    onClose={onCloseModal}
+                    handleDelete={() => handleDelete(card.id)}
+                />
+            )}
             {isOpen && (
                 <ModalEditCard isOpen={isOpen} onClose={onClose} card={card} />
             )}
@@ -47,13 +60,7 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
                 >
                     Archive
                 </MenuItem>
-                <MenuItem
-                    icon={<DeleteIcon />}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(card.id);
-                    }}
-                >
+                <MenuItem icon={<DeleteIcon />} onClick={onOpenModal}>
                     Delete
                 </MenuItem>
             </MenuList>

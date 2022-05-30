@@ -4,13 +4,16 @@ import {
     MenuList,
     MenuItem,
     IconButton,
+    useDisclosure,
 } from "@chakra-ui/react";
 import { HamburgerIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import React from "react";
 import fetcher from "../lib/fetcher";
+import ModalWindow from "../components/Modal";
 
 const CatDropdown: React.FunctionComponent = ({ category }) => {
+    const { isOpen, onClose, onOpen } = useDisclosure();
     const router = useRouter();
 
     const handleDelete = async (data) => {
@@ -19,6 +22,13 @@ const CatDropdown: React.FunctionComponent = ({ category }) => {
     };
     return (
         <Menu>
+            {isOpen && (
+                <ModalWindow
+                    isOpen={isOpen}
+                    onClose={onClose}
+                    handleDelete={() => handleDelete(category.id)}
+                />
+            )}
             <MenuButton as={IconButton} icon={<HamburgerIcon />}>
                 Click here...
             </MenuButton>
@@ -26,10 +36,11 @@ const CatDropdown: React.FunctionComponent = ({ category }) => {
                 <MenuItem icon={<EditIcon />}>Edit Name</MenuItem>
                 <MenuItem
                     icon={<DeleteIcon />}
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        handleDelete(category.id);
-                    }}
+                    // onClick={(e) => {
+                    //     e.stopPropagation();
+                    //     handleDelete(category.id);
+                    // }}
+                    onClick={onOpen}
                 >
                     Delete Category
                 </MenuItem>

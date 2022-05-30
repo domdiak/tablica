@@ -1,21 +1,20 @@
---> When user doesn't exist, the loading doesn't end
---> Modal for deleting
 --> Fix the weird rendering issues
---> Add catch-all route
 --> Feed only data from the logged in user (lol)
 
 UI:
-the buttons work
 
 Dzisiaj:
---> Set up color palette
---> Add colors on drag&drop events
---> Fix login page DONE
---> Fix registration page DONE
---> Add form validation to submit forms in the app DONE
---> Add error messages
---> Make buttons on the NavBar work
---> Removed AddCard from archive
---> Add Edit name for category
+
+--> Removed AddCard from archive DONE question here // queestion how they get rendered as well
+
 --> Confirmation modal for deleting
---> Make logout button work
+--> API route for editing name
+--> Drag and Drop colours
+
+--> Add modals!
+--> Add Show Archive button
+--> Archive always shows as the last one
+--> Set up color palette
+--> Add catch-all route
+--> Updated Seed data
+--> Look into rendering p;lo

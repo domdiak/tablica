@@ -1,8 +1,9 @@
 import { Box } from "@chakra-ui/layout";
-import { Button, Flex, Heading, Spacer } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import Card from "./Card";
 import CatDropdown from "./CatDropdown";
+import CategoryName from "../components/CategoryName";
 
 const CategoryColumn = ({ category, provided, onOpen }) => {
     return (
@@ -11,17 +12,19 @@ const CategoryColumn = ({ category, provided, onOpen }) => {
             minWidth="300px"
             height="600px"
             bg="lightgrey"
-            margin="20px"
+            margin="10px"
+            borderRadius="10px"
             ref={provided.innerRef}
             {...provided.droppableProps}
             direction="column"
             justifyContent="space-between"
         >
             <div>
-                <Flex padding="5px">
-                    <Heading size="lg"> {category.name} </Heading>
-                    <Spacer />
-                    <CatDropdown category={category} />
+                <Flex margin="5px" justify="space-between">
+                    <CategoryName category={category} />
+                    {category.name !== "Archived" && (
+                        <CatDropdown category={category} />
+                    )}
                 </Flex>
                 <Flex
                     direction="column"
@@ -35,17 +38,18 @@ const CategoryColumn = ({ category, provided, onOpen }) => {
                     {provided.placeholder}
                 </Flex>
             </div>
-
-            <Button
-                onClick={onOpen}
-                leftIcon={<AddIcon />}
-                bottom="1rem"
-                width="90%"
-                marginX="10px"
-            >
-                {" "}
-                Add Card{" "}
-            </Button>
+            {category.name !== "Archived" && (
+                <Button
+                    onClick={onOpen}
+                    leftIcon={<AddIcon />}
+                    bottom="1rem"
+                    width="90%"
+                    marginX="10px"
+                >
+                    {" "}
+                    Add Card{" "}
+                </Button>
+            )}
         </Flex>
     );
 };
