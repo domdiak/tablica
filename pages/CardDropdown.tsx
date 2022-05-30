@@ -52,14 +52,16 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
                 <MenuItem icon={<EditIcon />} onClick={onOpen}>
                     Edit
                 </MenuItem>
-                <MenuItem
-                    icon={<EditIcon />}
-                    onClick={() => {
-                        updateCard(card.id, 5);
-                    }}
-                >
-                    Archive
-                </MenuItem>
+                {card.categoryId !== 5 && (
+                    <MenuItem
+                        icon={<EditIcon />}
+                        onClick={() => {
+                            updateCard(card.id, 5);
+                        }}
+                    >
+                        Archive
+                    </MenuItem>
+                )}
                 <MenuItem icon={<DeleteIcon />} onClick={onOpenModal}>
                     Delete
                 </MenuItem>
