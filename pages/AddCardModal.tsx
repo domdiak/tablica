@@ -20,13 +20,13 @@ import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
 
-const ModalAddCard = ({ isOpen, onClose, categories }) => {
+const ModalAddCard = ({ isOpen, onClose, category }) => {
     const router = useRouter();
     const [inputData, setInputData] = useState({
         title: "",
         description: "",
         link: "",
-        categoryId: 1,
+        categoryId: category.id,
     });
 
     const handleChange = (e) => {
@@ -78,8 +78,8 @@ const ModalAddCard = ({ isOpen, onClose, categories }) => {
                                 type="link"
                                 name="link"
                             />
-                            <FormLabel> Category</FormLabel>
-                            <Select
+                            {/* <FormLabel> Category</FormLabel> */}
+                            {/* <Select
                                 placeholder="Select category"
                                 onChange={handleChange}
                                 name="categoryId"
@@ -95,16 +95,24 @@ const ModalAddCard = ({ isOpen, onClose, categories }) => {
                                         </option>
                                     );
                                 })}
-                            </Select>
+                            </Select> */}
                         </FormControl>
                     </form>
                 </ModalBody>
                 <ModalFooter>
-                    <Button type="submit" form="add-card">
+                    <Button
+                        type="submit"
+                        form="add-card"
+                        variant="primary"
+                        margin="5px"
+                    >
                         {" "}
                         Add{" "}
                     </Button>
-                    <Button onClick={onClose}> Close </Button>
+                    <Button variant="primary" margin="5px" bg="main.1000">
+                        {" "}
+                        Close{" "}
+                    </Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

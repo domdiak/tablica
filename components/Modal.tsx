@@ -18,10 +18,12 @@ const ModalWindow = ({ isOpen, onClose, handleDelete }) => {
                 <ModalCloseButton />
                 <ModalHeader>Are you sure?</ModalHeader>
                 <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={handleDelete}>
+                    <Button variant="primary" mr={3} onClick={handleDelete}>
                         Confirm
                     </Button>
-                    <Button onClick={onClose}>Cancel</Button>
+                    <Button variant="primary" bg="main.100" onClick={onClose}>
+                        Cancel
+                    </Button>
                 </ModalFooter>
             </ModalContent>
         </Modal>

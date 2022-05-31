@@ -14,7 +14,9 @@ const NavBar = () => {
             {isOpen && <AddCatModal isOpen={isOpen} onClose={onClose} />}{" "}
             <Box paddingY="5px" paddingX="10px">
                 <Flex h="16" alignItems="center" justify="space-between">
-                    <Logo />
+                    <Box width="150px" height="50px">
+                        <Logo />
+                    </Box>
                     <Flex alignItems="center">
                         <Stack direction="row" spacing={7}>
                             <Button
@@ -28,7 +30,7 @@ const NavBar = () => {
                                 variant="primary"
                                 onClick={() => {
                                     fetcher("/logout");
-                                    router.push("/");
+                                    // router.reload();
                                 }}
                             >
                                 {" "}

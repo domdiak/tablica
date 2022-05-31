@@ -28,6 +28,14 @@ const theme = extendTheme({
                 },
             },
         },
+        Input: {
+            variants: {
+                primary: {
+                    borderColor: "main.900",
+                    focusBorderColor: "main.900",
+                },
+            },
+        },
     },
 });
 

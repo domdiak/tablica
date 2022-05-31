@@ -12,12 +12,17 @@ Pytania:
 
 Todo:
 
+--> Load data from the logged in user DONE
 --> Add a loading page
---> Correct the logo
---> Improve login page:
--> Underline link on 'here'
---> Add headline
+--> Correct the logo DONE
+--> Improve login page DONE
+-> Underline link on 'here' DONE
+--> Add headline DONE
 --> Add style to AddCardModal
 --> Add style to EditCardModal
 --> Add style to AddCatModal
 --> Add style to generic modal
+--> Look into logout button
+--> Look into testing
+--> Add built-in categories
+-> Fix logout button

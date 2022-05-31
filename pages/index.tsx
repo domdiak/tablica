@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDisclosure, Button, useBoolean } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
+import jwt from "jsonwebtoken";
 import { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
 import AddCardModal from "./AddCardModal";
 import Board from "./Board";
-import { validateRoute } from "../lib/auth";
-import jwt from "jsonwebtoken";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
@@ -95,13 +94,13 @@ const Home = ({ categoriesData }) => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            {isOpen && (
+            {/* {isOpen && (
                 <AddCardModal
                     isOpen={isOpen}
                     onClose={onClose}
                     categories={categories}
                 />
-            )}
+            )} */}
             <Board categories={categories} onOpen={onOpen} isOpen={isOpen} />{" "}
         </DragDropContext>
     );

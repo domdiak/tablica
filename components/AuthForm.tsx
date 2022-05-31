@@ -10,11 +10,14 @@ import {
     Alert,
     AlertIcon,
     AlertTitle,
+    Heading,
+    Text,
+    Link,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
-import Link from "next/link";
+// import Link from "next/link";
 import { auth } from "../lib/mutations";
 import Logo from "./Logo";
 
@@ -44,6 +47,10 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
             <Stack spacing={8} mx="auto" maxW="lg" py="12" px="6" minW="25%">
                 <Stack align="center">
                     <Logo />
+                    <Heading fontSize="4xl">Sign in to your account</Heading>
+                    <Text fontSize="xl" color="gray.600">
+                        and stay on top of your job search process!{" "}
+                    </Text>
                 </Stack>
                 <Box
                     padding="50px"
@@ -66,6 +73,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                                 <Input
                                     placeholder="email"
                                     type="email"
+                                    variant="primary"
                                     {...register("email", {
                                         required: "Required field",
                                     })}
@@ -82,6 +90,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                                 <Input
                                     placeholder="password"
                                     type="password"
+                                    variant="primary"
                                     {...register("password", {
                                         required: "Required field",
                                         minLength: {
@@ -114,7 +123,10 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                         <Box data-cy="1">
                             {" "}
                             Don't have an account? Sign up{" "}
-                            <Link href="/signup"> here. </Link>{" "}
+                            <Link href="/signup" fontWeight="bold">
+                                {" "}
+                                here.{" "}
+                            </Link>{" "}
                         </Box>
                     )}
                 </Box>
