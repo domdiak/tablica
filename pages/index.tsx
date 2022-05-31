@@ -7,6 +7,7 @@ import fetcher from "../lib/fetcher";
 import AddCardModal from "./AddCardModal";
 import Board from "./Board";
 import { validateRoute } from "../lib/auth";
+import jwt from "jsonwebtoken";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
@@ -24,15 +25,6 @@ const Home = ({ categoriesData }) => {
         const data = { cardId, categoryId };
         await fetcher("/updateCard", data);
     };
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await fetcher("/category");
-    //         console.log({ response });
-    //         setCategories(response);
-    //     };
-    //     fetchData();
-    // }, []);
 
     const onDragEnd = (result) => {
         console.log("DnD event:", result);
@@ -115,8 +107,14 @@ const Home = ({ categoriesData }) => {
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+    const token = req.cookies.ACCESS_TOKEN;
+    const { id } = jwt.verify(token, "hello");
+
     const categories = await prisma.category.findMany({
+        where: {
+            userId: id,
+        },
         include: {
             cards: true,
         },

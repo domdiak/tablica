@@ -22,6 +22,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const router = useRouter();
+
     const {
         register,
         handleSubmit,
@@ -39,7 +40,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
     };
 
     return (
-        <Flex minH="100vh" align="center" justify="center" bg="gray.200">
+        <Flex minH="100vh" align="center" justify="center">
             <Stack spacing={8} mx="auto" maxW="lg" py="12" px="6" minW="25%">
                 <Stack align="center">
                     <Logo />
@@ -50,6 +51,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                     borderRadius="6px"
                     boxShadow="xl"
                     data-cy="signin-form"
+                    bg="main.100"
                 >
                     <Stack spacing="4">
                         {error && (
@@ -98,8 +100,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                             </FormControl>
                             <Button
                                 type="submit"
-                                bg="gray.400"
-                                _hover={{ bg: "gray.500" }}
+                                variant="primary"
                                 isLoading={isLoading}
                                 marginY="3"
                             >

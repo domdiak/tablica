@@ -8,7 +8,7 @@ import AddCatModal from "../pages/AddCatModal";
 
 const NavBar = () => {
     const { isOpen, onClose, onOpen } = useDisclosure();
-
+    const router = useRouter();
     return (
         <Box height="70px">
             {isOpen && <AddCatModal isOpen={isOpen} onClose={onClose} />}{" "}
@@ -26,7 +26,10 @@ const NavBar = () => {
                             </Button>
                             <Button
                                 variant="primary"
-                                onClick={() => fetcher("/logout")}
+                                onClick={() => {
+                                    fetcher("/logout");
+                                    router.push("/");
+                                }}
                             >
                                 {" "}
                                 Logout{" "}

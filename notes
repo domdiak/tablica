@@ -1,19 +1,6 @@
---> Fix the weird rendering issues
 --> Feed only data from the logged in user (lol)
 
-UI:
-
-Dzisiaj:
-
---> Removed AddCard from archive DONE question here // queestion how they get rendered as well
-
---> Drag and Drop colours
-
---> Add Show Archive button DONE
---> Archive always shows as the last one
---> Set up color palette
 --> Add catch-all route
---> Look into rendering p;lo
 
 New todo:
 --> Add loading page
@@ -21,3 +8,16 @@ New todo:
 Pytania:
 
 --> Jak znalezc ten DB error
+--> More optimised Archive map function
+
+Todo:
+
+--> Add a loading page
+--> Correct the logo
+--> Improve login page:
+-> Underline link on 'here'
+--> Add headline
+--> Add style to AddCardModal
+--> Add style to EditCardModal
+--> Add style to AddCatModal
+--> Add style to generic modal
