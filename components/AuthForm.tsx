@@ -17,7 +17,6 @@ import {
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { useForm } from "react-hook-form";
-// import Link from "next/link";
 import { auth } from "../lib/mutations";
 import Logo from "./Logo";
 
@@ -33,7 +32,6 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
     } = useForm();
 
     const onSubmit = async (values) => {
-        console.log({ values });
         setIsLoading(true);
 
         const res = await auth(mode, values);

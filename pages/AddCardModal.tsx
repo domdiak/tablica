@@ -9,18 +9,25 @@ import {
     ModalCloseButton,
     FormControl,
     FormLabel,
-    FormHelperText,
     Input,
     Button,
-    Select,
+    Alert,
+    AlertIcon,
+    AlertTitle,
 } from "@chakra-ui/react";
-
+import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
 
 const ModalAddCard = ({ isOpen, onClose, category }) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
+    const error = "All fields are required";
     const router = useRouter();
     const [inputData, setInputData] = useState({
         title: "",
@@ -29,20 +36,12 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
         categoryId: category.id,
     });
 
-    const handleChange = (e) => {
-        setInputData({
-            ...inputData,
-            [e.target.name]:
-                e.target.name === "categoryId"
-                    ? parseInt(e.target.value)
-                    : e.target.value,
-        });
-    };
-    const handleSubmit = async (data) => {
-        console.log("Data from add new card:", data);
-        await fetcher("/addNewCard", data);
+    const onSubmit = async (data) => {
+        const updatedData = { ...data, categoryId: category.id };
+        await fetcher("/addNewCard", updatedData);
         router.reload();
     };
+
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -51,51 +50,39 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
                     Add a new card:
                     <ModalCloseButton />
                 </ModalHeader>
+                {error && (
+                    <Alert status="error">
+                        <AlertIcon />
+                        <AlertTitle> {error} </AlertTitle>
+                    </Alert>
+                )}
                 <ModalBody>
-                    <form
-                        id="add-card"
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            handleSubmit(inputData);
-                        }}
-                    >
-                        <FormControl>
+                    <form id="add-card" onSubmit={handleSubmit(onSubmit)}>
+                        <FormControl isRequired>
                             <FormLabel> Title</FormLabel>
                             <Input
-                                onChange={handleChange}
                                 type="title"
                                 name="title"
+                                {...register("title", {
+                                    required: "Required field",
+                                })}
                             />
                             <FormLabel> Description</FormLabel>
                             <Input
-                                onChange={handleChange}
+                                {...register("description", {
+                                    required: "Required field",
+                                })}
                                 type="description"
                                 name="description"
                             />
                             <FormLabel> Link</FormLabel>
                             <Input
-                                onChange={handleChange}
+                                {...register("link", {
+                                    required: "Required field",
+                                })}
                                 type="link"
                                 name="link"
                             />
-                            {/* <FormLabel> Category</FormLabel> */}
-                            {/* <Select
-                                placeholder="Select category"
-                                onChange={handleChange}
-                                name="categoryId"
-                            >
-                                {categories.map((category) => {
-                                    return (
-                                        <option
-                                            key={category.id}
-                                            value={category.id}
-                                        >
-                                            {" "}
-                                            {category.name}{" "}
-                                        </option>
-                                    );
-                                })}
-                            </Select> */}
                         </FormControl>
                     </form>
                 </ModalBody>
