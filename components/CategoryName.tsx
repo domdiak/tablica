@@ -7,8 +7,7 @@ import {
     EditableInput,
     Input,
     Flex,
-    useEditableControls,
-    IconButton,
+    Tooltip,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import EditableControls from "./EditableControls";
@@ -24,7 +23,9 @@ const CategoryName = ({ category }) => {
                 fontWeight="bold"
                 paddingX="10px"
             >
-                <EditablePreview />
+                <Tooltip label="Click to edit">
+                    <EditablePreview _hover={{ background: "main.300" }} />
+                </Tooltip>
                 <Flex width="60%">
                     <Input
                         as={EditableInput}

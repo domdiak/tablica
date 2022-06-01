@@ -1,7 +1,7 @@
 import { useEditableControls, ButtonGroup, IconButton } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
-import fetcher from "../lib/fetcher";
 import { useRouter } from "next/router";
+import fetcher from "../lib/fetcher";
 
 const EditableControls = ({ input, category }) => {
     const router = useRouter();

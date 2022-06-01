@@ -33,7 +33,6 @@ const CatDropdown: React.FunctionComponent = ({ category }) => {
                 Click here...
             </MenuButton>
             <MenuList>
-                <MenuItem icon={<EditIcon />}>Edit Name</MenuItem>
                 <MenuItem icon={<DeleteIcon />} onClick={onOpen}>
                     Delete Category
                 </MenuItem>
