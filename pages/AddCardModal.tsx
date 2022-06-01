@@ -1,5 +1,4 @@
 import {
-    Box,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -33,9 +32,6 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
         await fetcher("/addNewCard", updatedData);
         router.reload();
     };
-
-    const error = "All fields are required";
-    const warning = "Fill out all fields";
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>

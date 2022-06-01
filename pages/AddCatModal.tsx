@@ -15,7 +15,6 @@ import {
     AlertTitle,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import fetcher from "../lib/fetcher";

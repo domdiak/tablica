@@ -6,7 +6,7 @@ import {
     IconButton,
     useDisclosure,
 } from "@chakra-ui/react";
-import { HamburgerIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import React from "react";
 import fetcher from "../lib/fetcher";

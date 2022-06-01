@@ -1,4 +1,4 @@
-import { Button, Flex, useDisclosure, Box, Headline } from "@chakra-ui/react";
+import { Button, Flex, useDisclosure, Box } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import Card from "./Card";
 import CatDropdown from "./CatDropdown";
@@ -6,8 +6,6 @@ import CategoryName from "../components/CategoryName";
 import AddCardModal from "./AddCardModal";
 
 const CategoryColumn = ({ category, provided, snapshot, archiveId }) => {
-    // console.log({ category });
-
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     return (

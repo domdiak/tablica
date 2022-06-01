@@ -1,4 +1,4 @@
-import { useEditableControls, ButtonGroup, IconButton } from "@chakra-ui/react";
+import { useEditableControls, IconButton } from "@chakra-ui/react";
 import { CheckIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import fetcher from "../lib/fetcher";

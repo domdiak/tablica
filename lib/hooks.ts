@@ -1,4 +1,4 @@
-import useSWR, { useSWRConfig, useSWRconfig } from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import fetcher from "./fetcher";
 
 export const useMe = () => {

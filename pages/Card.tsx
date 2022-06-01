@@ -1,20 +1,11 @@
 import { Box } from "@chakra-ui/layout";
-import {
-    Button,
-    useDisclosure,
-    Heading,
-    IconButton,
-    Grid,
-    GridItem,
-} from "@chakra-ui/react";
+import { Heading, IconButton, Grid, GridItem } from "@chakra-ui/react";
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-// import { useRouter } from "next/router";
 
 import CardDropdown from "./CardDropdown";
 
 const Card = ({ card, archiveId, index }) => {
-    // const router = useRouter();
     resetServerContext();
 
     return (

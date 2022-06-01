@@ -15,9 +15,6 @@ import ModalEditCard from "./ModalEditCard";
 import ModalWindow from "../components/Modal";
 
 const CardDropdown: React.FunctionComponent = ({ card, archiveId }) => {
-    console.log({ card });
-    console.log({ archiveId });
-
     const { isOpen, onClose, onOpen } = useDisclosure();
     const {
         isOpen: isOpenModal,
