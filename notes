@@ -1,14 +1,5 @@
---> Feed only data from the logged in user (lol)
-
---> Add catch-all route
-
 New todo:
 --> Add loading page
-
-Pytania:
-
---> Jak znalezc ten DB error
---> More optimised Archive map function
 
 Todo:
 
@@ -18,11 +9,39 @@ Todo:
 --> Improve login page DONE
 -> Underline link on 'here' DONE
 --> Add headline DONE
---> Add style to AddCardModal
---> Add style to EditCardModal
---> Add style to AddCatModal
---> Add style to generic modal
---> Look into logout button
---> Look into testing
+--> Add style to generic modal DONE
+--> Add style to AddCardModal DONE
+--> Add form validation to edit card DONE
+
+Pytania:
+
+--> Jak znalezc ten DB error
+-->How to optmise AddCard code?
+--> What's the purpose of res.json in POST requests
+
+================ Today =========================
+TBD:
+--> Center all modals DONE? "isCentered"
+
+DONE:
+--> Add style to EditCardModal DONE
+--> Add style to AddCatModal DONE
+--> Look into logout button DONE
+
+Current:
+--> Center things in a category DONE
+
+IN PROGRESS:
 --> Add built-in categories
--> Fix logout button
+--> Fix updating on Archive
+--> Fix Archive icon
+-> Fix EditName button
+-> CategoryColumn --> alignLeft
+-> Fix naming of Title / Description
+-> Fix order of categories
+
+WAITLIST:
+--> Fix the card display
+
+AMBITIOUS:
+--> Look into testing

@@ -5,12 +5,11 @@ import jwt from "jsonwebtoken";
 import { GetServerSideProps } from "next";
 import prisma from "../lib/prisma";
 import fetcher from "../lib/fetcher";
-import AddCardModal from "./AddCardModal";
 import Board from "./Board";
 
 const Home = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
-    const { isOpen, onClose, onOpen } = useDisclosure();
+    const { isOpen, onOpen } = useDisclosure();
 
     const DragDropContext = dynamic(
         () =>
@@ -26,8 +25,7 @@ const Home = ({ categoriesData }) => {
     };
 
     const onDragEnd = (result) => {
-        console.log("DnD event:", result);
-        const { destination, source, draggableId } = result;
+        const { destination, source } = result;
         const sourceColumn = categories.find(
             (column) => column.name === source.droppableId
         );
@@ -67,7 +65,6 @@ const Home = ({ categoriesData }) => {
         } else {
             const newSourceCards = Array.from(sourceColumn.cards);
             const [removedCard] = newSourceCards.splice(source.index, 1);
-            console.log({ removedCard });
             const newSourceColumn = {
                 ...sourceColumn,
                 cards: newSourceCards,
@@ -94,13 +91,6 @@ const Home = ({ categoriesData }) => {
 
     return (
         <DragDropContext onDragEnd={onDragEnd}>
-            {/* {isOpen && (
-                <AddCardModal
-                    isOpen={isOpen}
-                    onClose={onClose}
-                    categories={categories}
-                />
-            )} */}
             <Board categories={categories} onOpen={onOpen} isOpen={isOpen} />{" "}
         </DragDropContext>
     );

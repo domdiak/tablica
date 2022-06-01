@@ -43,13 +43,26 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
     return (
         <Flex minH="100vh" align="center" justify="center">
             <Stack spacing={8} mx="auto" maxW="lg" py="12" px="6" minW="25%">
-                <Stack align="center">
-                    <Logo />
-                    <Heading fontSize="4xl">Sign in to your account</Heading>
-                    <Text fontSize="xl" color="gray.600">
-                        and stay on top of your job search process!{" "}
-                    </Text>
-                </Stack>
+                {mode === "signup" && (
+                    <Stack align="center">
+                        <Logo />
+                        <Heading fontSize="4xl">Sign up now!</Heading>
+                        <Text fontSize="xl" color="gray.600">
+                            Stay on top of your job search process!{" "}
+                        </Text>
+                    </Stack>
+                )}
+                {mode === "signin" && (
+                    <Stack align="center">
+                        <Logo />
+                        <Heading fontSize="4xl">
+                            Sign in to your account
+                        </Heading>
+                        <Text fontSize="xl" color="gray.600">
+                            and stay on top of your job search process!{" "}
+                        </Text>
+                    </Stack>
+                )}
                 <Box
                     padding="50px"
                     rounded="lg"

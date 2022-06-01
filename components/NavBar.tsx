@@ -28,9 +28,9 @@ const NavBar = () => {
                             </Button>
                             <Button
                                 variant="primary"
-                                onClick={() => {
-                                    fetcher("/logout");
-                                    // router.reload();
+                                onClick={async () => {
+                                    await fetcher("/logout");
+                                    router.reload();
                                 }}
                             >
                                 {" "}

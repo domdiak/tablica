@@ -42,5 +42,5 @@ model Category {
   name String 
   cards Card[]
   user User @relation(fields: [userId], references: [id])
-  userId Int @default(1) 
+  userId Int  
 }

@@ -18,7 +18,7 @@ const CategoryColumn = ({ category, provided, snapshot }) => {
                 />
             )}
             <Flex
-                basis="30%"
+                // basis="30%"
                 minWidth="300px"
                 height="600px"
                 margin="10px"
@@ -39,7 +39,8 @@ const CategoryColumn = ({ category, provided, snapshot }) => {
                     <Flex
                         direction="column"
                         justify="flex-start"
-                        height="500px"
+                        align="center"
+                        height="470px"
                         overflowY="auto"
                     >
                         {category.cards.map((card, index) => (

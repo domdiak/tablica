@@ -22,7 +22,7 @@ const Card = ({ card, index }) => {
             <Draggable draggableId={card.title} index={index}>
                 {(provided, snapshot) => (
                     <Grid
-                        width="90%"
+                        width="300px"
                         height="90px"
                         margin="10px"
                         padding="5px"

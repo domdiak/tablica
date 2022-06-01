@@ -16,7 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-// import { useState } from "react";
 import fetcher from "../lib/fetcher";
 
 const ModalEditCard = ({ isOpen, onClose, card }) => {
@@ -26,11 +25,9 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
         formState: { errors },
     } = useForm();
     const router = useRouter();
-    // const [cardData, setCardData] = useState(card);
 
     const onSubmit = async (data) => {
         const updatedData = { ...data, id: card.id };
-        console.log({ updatedData });
         await fetcher("/editCard", updatedData);
         router.reload();
     };

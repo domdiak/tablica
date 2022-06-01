@@ -27,31 +27,16 @@ const AddCatModal = ({ isOpen, onClose }) => {
         formState: { errors },
     } = useForm();
     const router = useRouter();
-    // const [inputData, setInputData] = useState({
-    //     name: "",
-    // });
 
     const onSubmit = async (data) => {
-        console.log("Data from add new card:", data);
         await fetcher("/addNewCat", data);
         router.reload();
     };
 
-    // const handleChange = (e) => {
-    //     setInputData({
-    //         ...inputData,
-    //         [e.target.name]: e.target.value,
-    //     });
-    // };
-    // const handleSubmit = async (data) => {
-    //     console.log("Data from add new card:", data);
-    //     await fetcher("/addNewCat", data);
-    //     router.reload();
-    // };
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent top="6rem">
                 <ModalHeader>
                     Add a new category:
                     <ModalCloseButton />

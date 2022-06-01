@@ -15,6 +15,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             data: {
                 email,
                 password: bcrypt.hashSync(password, salt),
+                categories: {
+                    create: [
+                        {
+                            name: "Shortlist",
+                        },
+                        { name: "Applied" },
+                        { name: "Interview" },
+                        { name: "Rejected" },
+                        { name: "Archived" },
+                    ],
+                },
             },
         });
     } catch (e) {
