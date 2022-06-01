@@ -65,7 +65,7 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
                                 errors.link
                             }
                         >
-                            <FormLabel> Title</FormLabel>
+                            <FormLabel> Job Role</FormLabel>
                             <Input
                                 type="title"
                                 name="title"
@@ -73,7 +73,7 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
                                     required: "Required field",
                                 })}
                             />
-                            <FormLabel> Description</FormLabel>
+                            <FormLabel> Company Name</FormLabel>
                             <Input
                                 type="description"
                                 name="description"
@@ -81,7 +81,7 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
                                     required: "Required field",
                                 })}
                             />
-                            <FormLabel> Link</FormLabel>
+                            <FormLabel> Link to Job Add</FormLabel>
                             <Input
                                 {...register("link", {
                                     required: "Required field",

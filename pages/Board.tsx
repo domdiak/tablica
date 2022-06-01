@@ -46,7 +46,7 @@ const Board = ({ categories, onOpen, isOpen }) => {
             <Button
                 variant="primary"
                 height="600px"
-                margin="10px"
+                marginY="10px"
                 borderRadius="10px"
                 onClick={setShowArchive.toggle}
             >

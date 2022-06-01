@@ -29,18 +29,19 @@ DONE:
 --> Look into logout button DONE
 --> Add built-in categories DONE
 --> Center things in a category DONE
+-> CategoryColumn --> alignLeft DONE
+-> Fix EditName button DONE (fixed editable instead)
 
 Current:
 
 IN PROGRESS:
---> Fix moving a card to Archive
---> Fix Archive icon
--> Fix EditName button
--> CategoryColumn --> alignLeft
--> Fix naming of Title / Description
+-> Fix naming of Title / Description DONE
 -> Fix order of categories
 
 WAITLIST:
+--> Fix Archive icon
+--> Disable Editable for Archived
+--> Fix updating on Archive
 --> Fix the card display
 
 AMBITIOUS:

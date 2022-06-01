@@ -50,7 +50,7 @@ const AddCatModal = ({ isOpen, onClose }) => {
                     )}
                     <form id="add-card" onSubmit={handleSubmit(onSubmit)}>
                         <FormControl>
-                            <FormLabel> Title</FormLabel>
+                            <FormLabel> Category Name: </FormLabel>
                             <Input
                                 type="name"
                                 name="name"

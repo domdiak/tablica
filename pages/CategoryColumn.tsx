@@ -1,4 +1,4 @@
-import { Button, Flex, useDisclosure, Box } from "@chakra-ui/react";
+import { Button, Flex, useDisclosure, Box, Headline } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
 import Card from "./Card";
 import CatDropdown from "./CatDropdown";
@@ -33,10 +33,9 @@ const CategoryColumn = ({ category, provided, snapshot, archiveId }) => {
                 <div>
                     <Flex margin="5px" justify="space-between">
                         <CategoryName category={category} />
-                        {category.name !== "Archived" && (
-                            <CatDropdown category={category} />
-                        )}
+                        <CatDropdown category={category} />
                     </Flex>
+
                     <Flex
                         direction="column"
                         justify="flex-start"

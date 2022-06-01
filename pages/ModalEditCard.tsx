@@ -50,16 +50,7 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
 
                     <form id="edit-card" onSubmit={handleSubmit(onSubmit)}>
                         <FormControl>
-                            <FormLabel> Title</FormLabel>
-                            <Input
-                                type="title"
-                                name="title"
-                                defaultValue={card.title}
-                                {...register("title", {
-                                    required: "Required field",
-                                })}
-                            />
-                            <FormLabel> Description</FormLabel>
+                            <FormLabel> Job Role</FormLabel>
                             <Input
                                 type="description"
                                 name="description"
@@ -68,7 +59,16 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
                                     required: "Required field",
                                 })}
                             />
-                            <FormLabel> Link</FormLabel>
+                            <FormLabel> Company Name</FormLabel>
+                            <Input
+                                type="title"
+                                name="title"
+                                defaultValue={card.title}
+                                {...register("title", {
+                                    required: "Required field",
+                                })}
+                            />
+                            <FormLabel> Link to Job Add</FormLabel>
                             <Input
                                 type="link"
                                 name="link"

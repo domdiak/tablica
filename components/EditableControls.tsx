@@ -17,6 +17,7 @@ const EditableControls = ({ input, category }) => {
 
     return isEditing ? (
         <IconButton
+            aria-label="Confirm changed name"
             marginX="5px"
             icon={<CheckIcon />}
             {...getSubmitButtonProps()}
