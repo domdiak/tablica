@@ -9,12 +9,15 @@ import {
 import { HamburgerIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import React from "react";
+import { BsFillArchiveFill } from "react-icons/bs";
 import fetcher from "../lib/fetcher";
 import ModalEditCard from "./ModalEditCard";
 import ModalWindow from "../components/Modal";
-import { BsFillArchiveFill } from "react-icons/bs";
 
-const CatDropdown: React.FunctionComponent = ({ card }) => {
+const CardDropdown: React.FunctionComponent = ({ card, archiveId }) => {
+    console.log({ card });
+    console.log({ archiveId });
+
     const { isOpen, onClose, onOpen } = useDisclosure();
     const {
         isOpen: isOpenModal,
@@ -53,11 +56,11 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
                 <MenuItem icon={<EditIcon />} onClick={onOpen}>
                     Edit
                 </MenuItem>
-                {card.categoryId !== 5 && (
+                {card.categoryId !== archiveId && (
                     <MenuItem
                         icon={<BsFillArchiveFill />}
                         onClick={() => {
-                            updateCard(card.id, 5);
+                            updateCard(card.id, archiveId);
                             router.reload();
                         }}
                     >
@@ -72,4 +75,4 @@ const CatDropdown: React.FunctionComponent = ({ card }) => {
     );
 };
 
-export default CatDropdown;
+export default CardDropdown;

@@ -9,6 +9,12 @@ const Board = ({ categories, onOpen, isOpen }) => {
     const [showArchive, setShowArchive] = useBoolean(false);
     console.log({ categories });
 
+    const archiveArrayId = categories
+        .filter(({ name }) => name === "Archived")
+        .map(({ id }) => id);
+
+    const archiveId = archiveArrayId[0];
+
     return (
         <Flex justify="flex-start" marginY="20px">
             {categories
@@ -24,6 +30,7 @@ const Board = ({ categories, onOpen, isOpen }) => {
                         {(provided, snapshot) => (
                             <CategoryColumn
                                 category={category}
+                                archiveId={archiveId}
                                 key={category.id}
                                 index={index}
                                 provided={provided}

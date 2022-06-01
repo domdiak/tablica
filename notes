@@ -27,13 +27,13 @@ DONE:
 --> Add style to EditCardModal DONE
 --> Add style to AddCatModal DONE
 --> Look into logout button DONE
-
-Current:
+--> Add built-in categories DONE
 --> Center things in a category DONE
 
+Current:
+
 IN PROGRESS:
---> Add built-in categories
---> Fix updating on Archive
+--> Fix moving a card to Archive
 --> Fix Archive icon
 -> Fix EditName button
 -> CategoryColumn --> alignLeft

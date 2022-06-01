@@ -5,8 +5,6 @@ export default validateRoute(async (req, res, user) => {
     try {
         const { categoryId } = req.body;
 
-        console.log("server side", categoryId);
-
         const deleteCards = await prisma.card.deleteMany({
             where: {
                 categoryId,

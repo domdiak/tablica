@@ -9,12 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 import CardDropdown from "./CardDropdown";
 
-const Card = ({ card, index }) => {
-    const router = useRouter();
+const Card = ({ card, archiveId, index }) => {
+    // const router = useRouter();
     resetServerContext();
 
     return (
@@ -39,7 +39,7 @@ const Card = ({ card, index }) => {
                             <Heading size="md"> {card.description} </Heading>
                         </GridItem>
                         <GridItem justifySelf="end" margin="5px">
-                            <CardDropdown card={card} />
+                            <CardDropdown archiveId={archiveId} card={card} />
                         </GridItem>
                         <GridItem margin="5px">
                             <Heading size="sm"> {card.title} </Heading>
@@ -54,9 +54,6 @@ const Card = ({ card, index }) => {
                                     aria-label="See the job ad"
                                     size="sm"
                                     icon={<ExternalLinkIcon />}
-                                    // onClick={() =>
-                                    //     router.push(`http://${card.link}`)
-                                    // }
                                 >
                                     {" "}
                                 </IconButton>
