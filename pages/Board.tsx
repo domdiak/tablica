@@ -10,7 +10,7 @@ const Board = ({ categories, onOpen, isOpen }) => {
     console.log({ categories });
 
     return (
-        <Flex justify="space-evenly" marginY="20px">
+        <Flex justify="flex-start" marginY="20px">
             {categories
                 .filter((category) => {
                     if (showArchive) {

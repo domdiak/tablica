@@ -10,24 +10,28 @@ import {
     FormLabel,
     Input,
     Button,
+    Alert,
+    AlertIcon,
+    AlertTitle,
 } from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useState } from "react";
+// import { useState } from "react";
 import fetcher from "../lib/fetcher";
 
 const ModalEditCard = ({ isOpen, onClose, card }) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
     const router = useRouter();
-    const [cardData, setCardData] = useState(card);
+    // const [cardData, setCardData] = useState(card);
 
-    const handleChange = (e) => {
-        setCardData({
-            ...cardData,
-            [e.target.name]: e.target.value,
-        });
-    };
-
-    const handleSubmit = async (data) => {
-        await fetcher("/editCard", data);
+    const onSubmit = async (data) => {
+        const updatedData = { ...data, id: card.id };
+        console.log({ updatedData });
+        await fetcher("/editCard", updatedData);
         router.reload();
     };
 
@@ -40,34 +44,41 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
                     <ModalCloseButton />
                 </ModalHeader>
                 <ModalBody>
-                    <form
-                        id="edit-card"
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            handleSubmit(cardData);
-                        }}
-                    >
+                    {(errors.title || errors.description || errors.link) && (
+                        <Alert status="error">
+                            <AlertIcon />
+                            <AlertTitle> All fields are required </AlertTitle>
+                        </Alert>
+                    )}
+
+                    <form id="edit-card" onSubmit={handleSubmit(onSubmit)}>
                         <FormControl>
                             <FormLabel> Title</FormLabel>
                             <Input
                                 type="title"
                                 name="title"
                                 defaultValue={card.title}
-                                onChange={handleChange}
+                                {...register("title", {
+                                    required: "Required field",
+                                })}
                             />
                             <FormLabel> Description</FormLabel>
                             <Input
                                 type="description"
                                 name="description"
                                 defaultValue={card.description}
-                                onChange={handleChange}
+                                {...register("description", {
+                                    required: "Required field",
+                                })}
                             />
                             <FormLabel> Link</FormLabel>
                             <Input
                                 type="link"
                                 name="link"
                                 defaultValue={card.link}
-                                onChange={handleChange}
+                                {...register("link", {
+                                    required: "Required field",
+                                })}
                             />
                         </FormControl>
                     </form>

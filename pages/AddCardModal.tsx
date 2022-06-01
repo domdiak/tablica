@@ -16,7 +16,6 @@ import {
     AlertTitle,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { useRouter } from "next/router";
 
 import fetcher from "../lib/fetcher";
@@ -27,20 +26,16 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
         handleSubmit,
         formState: { errors },
     } = useForm();
-    const error = "All fields are required";
     const router = useRouter();
-    const [inputData, setInputData] = useState({
-        title: "",
-        description: "",
-        link: "",
-        categoryId: category.id,
-    });
 
     const onSubmit = async (data) => {
         const updatedData = { ...data, categoryId: category.id };
         await fetcher("/addNewCard", updatedData);
         router.reload();
     };
+
+    const error = "All fields are required";
+    const warning = "Fill out all fields";
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
@@ -50,15 +45,26 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
                     Add a new card:
                     <ModalCloseButton />
                 </ModalHeader>
-                {error && (
+                {errors.title || errors.description || errors.link ? (
                     <Alert status="error">
                         <AlertIcon />
-                        <AlertTitle> {error} </AlertTitle>
+                        <AlertTitle> All fields are required </AlertTitle>
+                    </Alert>
+                ) : (
+                    <Alert status="warning">
+                        <AlertIcon />
+                        <AlertTitle> Fill out all fields </AlertTitle>
                     </Alert>
                 )}
                 <ModalBody>
                     <form id="add-card" onSubmit={handleSubmit(onSubmit)}>
-                        <FormControl isRequired>
+                        <FormControl
+                            isInvalid={
+                                errors.title ||
+                                errors.description ||
+                                errors.link
+                            }
+                        >
                             <FormLabel> Title</FormLabel>
                             <Input
                                 type="title"
@@ -69,11 +75,11 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
                             />
                             <FormLabel> Description</FormLabel>
                             <Input
+                                type="description"
+                                name="description"
                                 {...register("description", {
                                     required: "Required field",
                                 })}
-                                type="description"
-                                name="description"
                             />
                             <FormLabel> Link</FormLabel>
                             <Input
@@ -96,7 +102,12 @@ const ModalAddCard = ({ isOpen, onClose, category }) => {
                         {" "}
                         Add{" "}
                     </Button>
-                    <Button variant="primary" margin="5px" bg="main.1000">
+                    <Button
+                        variant="primary"
+                        margin="5px"
+                        bg="main.1000"
+                        onClick={onClose}
+                    >
                         {" "}
                         Close{" "}
                     </Button>

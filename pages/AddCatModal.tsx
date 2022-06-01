@@ -1,5 +1,4 @@
 import {
-    Box,
     Modal,
     ModalOverlay,
     ModalContent,
@@ -9,34 +8,46 @@ import {
     ModalCloseButton,
     FormControl,
     FormLabel,
-    FormHelperText,
     Input,
     Button,
-    Select,
+    Alert,
+    AlertIcon,
+    AlertTitle,
 } from "@chakra-ui/react";
 
 import { useState } from "react";
 import { useRouter } from "next/router";
-
+import { useForm } from "react-hook-form";
 import fetcher from "../lib/fetcher";
 
 const AddCatModal = ({ isOpen, onClose }) => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm();
     const router = useRouter();
-    const [inputData, setInputData] = useState({
-        name: "",
-    });
+    // const [inputData, setInputData] = useState({
+    //     name: "",
+    // });
 
-    const handleChange = (e) => {
-        setInputData({
-            ...inputData,
-            [e.target.name]: e.target.value,
-        });
-    };
-    const handleSubmit = async (data) => {
+    const onSubmit = async (data) => {
         console.log("Data from add new card:", data);
         await fetcher("/addNewCat", data);
         router.reload();
     };
+
+    // const handleChange = (e) => {
+    //     setInputData({
+    //         ...inputData,
+    //         [e.target.name]: e.target.value,
+    //     });
+    // };
+    // const handleSubmit = async (data) => {
+    //     console.log("Data from add new card:", data);
+    //     await fetcher("/addNewCat", data);
+    //     router.reload();
+    // };
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
@@ -46,19 +57,21 @@ const AddCatModal = ({ isOpen, onClose }) => {
                     <ModalCloseButton />
                 </ModalHeader>
                 <ModalBody>
-                    <form
-                        id="add-card"
-                        onSubmit={(e) => {
-                            e.preventDefault();
-                            handleSubmit(inputData);
-                        }}
-                    >
+                    {errors.name && (
+                        <Alert status="error">
+                            <AlertIcon />
+                            <AlertTitle> The field is empty </AlertTitle>
+                        </Alert>
+                    )}
+                    <form id="add-card" onSubmit={handleSubmit(onSubmit)}>
                         <FormControl>
                             <FormLabel> Title</FormLabel>
                             <Input
-                                onChange={handleChange}
                                 type="name"
                                 name="name"
+                                {...register("name", {
+                                    required: "Required field",
+                                })}
                             />
                         </FormControl>
                     </form>
