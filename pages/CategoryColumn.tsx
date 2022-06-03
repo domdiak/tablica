@@ -1,11 +1,29 @@
 import { Button, Flex, useDisclosure, Box } from "@chakra-ui/react";
 import { AddIcon } from "@chakra-ui/icons";
+import { FunctionComponent } from "react";
 import Card from "./Card";
 import CatDropdown from "./CatDropdown";
 import CategoryName from "../components/CategoryName";
 import AddCardModal from "./AddCardModal";
+import { Category } from "../APIResponsesTypes";
 
-const CategoryColumn = ({ category, provided, snapshot, archiveId }) => {
+type CategoryColumnProps = {
+    index: number;
+    category: Category;
+    provided: any;
+    snapshot: any;
+    archiveId: number;
+    isOpen: boolean;
+    onOpen: () => void;
+    showArchive: boolean;
+};
+
+const CategoryColumn: FunctionComponent<CategoryColumnProps> = ({
+    category,
+    provided,
+    snapshot,
+    archiveId,
+}: CategoryColumnProps) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     return (

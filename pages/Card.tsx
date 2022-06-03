@@ -2,10 +2,10 @@ import { Box } from "@chakra-ui/layout";
 import { Heading, IconButton, Grid, GridItem } from "@chakra-ui/react";
 import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
-
+import { FunctionComponent } from "react";
 import CardDropdown from "./CardDropdown";
 
-const Card = ({ card, archiveId, index }) => {
+const Card: FunctionComponent = ({ card, index, archiveId }) => {
     resetServerContext();
 
     return (

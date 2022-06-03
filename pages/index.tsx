@@ -1,17 +1,27 @@
-import { useState, useEffect } from "react";
-import { useDisclosure, Button, useBoolean } from "@chakra-ui/react";
+import { useState, FunctionComponent } from "react";
+import { useDisclosure } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import jwt from "jsonwebtoken";
 import { GetServerSideProps } from "next";
-import prisma from "../lib/prisma";
-import fetcher from "../lib/fetcher";
+import { DropResult } from "react-beautiful-dnd";
 import Board from "./Board";
+import prisma from "../lib/prisma";
+import { Category } from "../APIResponsesTypes";
+import fetcher from "../lib/fetcher";
 
-const Home = ({ categoriesData }) => {
+// interface HomeProps {
+//     categoriesData: Category[];
+// }
+
+const Home: FunctionComponent<{ categoriesData: Category[] }> = ({
+    categoriesData,
+}) => {
     const [categories, setCategories] = useState(categoriesData);
     const { isOpen, onOpen } = useDisclosure();
+    console.log({ categoriesData });
 
-    const DragDropContext = dynamic(
+    // correct DragDrop context *****
+    const DragDropContext: any = dynamic(
         () =>
             import("react-beautiful-dnd").then((mod) => {
                 return mod.DragDropContext;
@@ -24,7 +34,7 @@ const Home = ({ categoriesData }) => {
         await fetcher("/updateCard", data);
     };
 
-    const onDragEnd = (result) => {
+    const onDragEnd = (result: DropResult): void => {
         const { destination, source } = result;
         const sourceColumn = categories.find(
             (column) => column.name === source.droppableId
@@ -82,7 +92,6 @@ const Home = ({ categoriesData }) => {
             const newState = Array.from(categories);
             newState[sourceColumnIndex] = newSourceColumn;
             newState[destinationColumnIndex] = newDestinationColumn;
-            console.log({ newDestinationColumn });
 
             updateCard(removedCard.id, newDestinationColumn.id);
             setCategories(newState);

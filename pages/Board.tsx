@@ -1,19 +1,29 @@
 import { Flex } from "@chakra-ui/layout";
 import { Button, useBoolean } from "@chakra-ui/react";
-import { AddIcon } from "@chakra-ui/icons";
 import { BsFillArchiveFill } from "react-icons/bs";
 import { Droppable } from "react-beautiful-dnd";
+import { FunctionComponent } from "react";
 import CategoryColumn from "./CategoryColumn";
+import { Category } from "../APIResponsesTypes";
 
-const Board = ({ categories, onOpen, isOpen }) => {
+interface BoardProps {
+    categories: Category[];
+    onOpen: () => void;
+    isOpen: boolean;
+}
+
+const Board: FunctionComponent<BoardProps> = ({
+    categories,
+    onOpen,
+    isOpen,
+}) => {
     const [showArchive, setShowArchive] = useBoolean(false);
-    console.log({ categories });
 
     const archiveArrayId = categories
         .filter(({ name }) => name === "Archived")
         .map(({ id }) => id);
 
-    const archiveId = archiveArrayId[0];
+    const archiveId: number = archiveArrayId[0];
 
     return (
         <Flex justify="flex-start" marginY="20px">
@@ -24,8 +34,8 @@ const Board = ({ categories, onOpen, isOpen }) => {
                     }
                     return category.name !== "Archived";
                 })
-                .sort((a, b) => (a.name === "Archived" ? 1 : -1))
-                .map((category, index) => (
+                .sort((a) => (a.name === "Archived" ? 1 : -1))
+                .map((category, index: number) => (
                     <Droppable droppableId={category.name} key={category.id}>
                         {(provided, snapshot) => (
                             <CategoryColumn

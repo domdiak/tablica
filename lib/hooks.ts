@@ -1,4 +1,4 @@
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import fetcher from "./fetcher";
 
 export const useMe = () => {
@@ -22,7 +22,6 @@ export const useCard = () => {
 
 export const useCategory = () => {
     const { data, error } = useSWR("/category", fetcher);
-    const { mutate } = useSWRConfig();
 
     return {
         categories: (data as any) || [],

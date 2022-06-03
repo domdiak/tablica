@@ -12,9 +12,25 @@ import React from "react";
 import fetcher from "../lib/fetcher";
 import ModalWindow from "../components/Modal";
 
-const CatDropdown: React.FunctionComponent = ({ category }) => {
+type CatDropdownProps = {
+    category: object;
+};
+
+type CategoryProps = {
+    category: object;
+    id: number;
+    name: string;
+    userId: number;
+    createdAt: Date;
+    updatedAt: Date;
+};
+
+const CatDropdown: React.FunctionComponent<CatDropdownProps> = ({
+    category,
+}: CategoryProps) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const router = useRouter();
+    console.log({ category });
 
     const handleDelete = async (data) => {
         await fetcher("/deleteCategory", { categoryId: data });

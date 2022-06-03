@@ -1,6 +1,7 @@
+import { FunctionComponent } from "react";
 import AuthForm from "../components/AuthForm";
 
-const Signup = () => {
+const Signup: FunctionComponent = () => {
     return <AuthForm mode="signup" />;
 };
 

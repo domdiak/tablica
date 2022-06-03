@@ -14,12 +14,12 @@ import {
     AlertIcon,
     AlertTitle,
 } from "@chakra-ui/react";
-
+import { FunctionComponent } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import fetcher from "../lib/fetcher";
 
-const AddCatModal = ({ isOpen, onClose }) => {
+const AddCatModal: FunctionComponent = ({ isOpen, onClose }) => {
     const {
         register,
         handleSubmit,

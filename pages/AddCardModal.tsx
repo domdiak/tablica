@@ -16,10 +16,11 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { FunctionComponent } from "react";
 
 import fetcher from "../lib/fetcher";
 
-const ModalAddCard = ({ isOpen, onClose, category }) => {
+const ModalAddCard: FunctionComponent = ({ isOpen, onClose, category }) => {
     const {
         register,
         handleSubmit,

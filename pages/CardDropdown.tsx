@@ -8,13 +8,13 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { BsFillArchiveFill } from "react-icons/bs";
 import fetcher from "../lib/fetcher";
 import ModalEditCard from "./ModalEditCard";
 import ModalWindow from "../components/Modal";
 
-const CardDropdown: React.FunctionComponent = ({ card, archiveId }) => {
+const CardDropdown: FunctionComponent = ({ card, archiveId }) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const {
         isOpen: isOpenModal,
