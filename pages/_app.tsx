@@ -1,5 +1,7 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { AppProps } from "next/app";
+// import { AppProps } from "next/app";
+import { NextComponentType, NextPageContext } from "next";
+
 import Layout from "../components/Layout";
 import "reset-css";
 
@@ -39,6 +41,13 @@ const theme = extendTheme({
         },
     },
 });
+
+type AppProps = {
+    pageProps: any;
+    Component: NextComponentType<NextPageContext, any, {}> & {
+        authPage: boolean;
+    };
+};
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
     return (

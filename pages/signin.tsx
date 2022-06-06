@@ -1,11 +1,6 @@
-import { FunctionComponent } from "react";
 import AuthForm from "../components/AuthForm";
 
-interface SigninProps {
-    authPage: boolean;
-}
-
-const Signin: FunctionComponent<SigninProps> = () => {
+const Signin = () => {
     return <AuthForm mode="signin" />;
 };
 
