@@ -9,8 +9,6 @@ import {
 } from "@chakra-ui/react";
 
 const ModalWindow = ({ isOpen, onClose, handleDelete }) => {
-    console.log(handleDelete);
-
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />

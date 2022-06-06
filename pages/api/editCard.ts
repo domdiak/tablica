@@ -1,10 +1,7 @@
-import Router from "next/router";
 import prisma from "../../lib/prisma";
 import { validateRoute } from "../../lib/auth";
 
-export default validateRoute(async (req, res, user) => {
-    console.log(req.body);
-
+export default validateRoute(async (req, res) => {
     try {
         const { id, title, description, link } = req.body;
         const editCard = await prisma.card.update({

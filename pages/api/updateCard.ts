@@ -1,7 +1,7 @@
 import prisma from "../../lib/prisma";
 import { validateRoute } from "../../lib/auth";
 
-export default validateRoute(async (req, res, user) => {
+export default validateRoute(async (req, res) => {
     try {
         const { cardId, categoryId } = req.body;
         const updateCard = await prisma.card.update({
