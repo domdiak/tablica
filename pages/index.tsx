@@ -9,16 +9,13 @@ import prisma from "../lib/prisma";
 import { Category } from "../APIResponsesTypes";
 import fetcher from "../lib/fetcher";
 
-// interface HomeProps {
-//     categoriesData: Category[];
-// }
+type HomeProps = {
+    categoriesData: Category[];
+};
 
-const Home: FunctionComponent<{ categoriesData: Category[] }> = ({
-    categoriesData,
-}) => {
+const Home: FunctionComponent<HomeProps> = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
     const { isOpen, onOpen } = useDisclosure();
-    console.log({ categoriesData });
 
     // correct DragDrop context *****
     const DragDropContext: any = dynamic(
@@ -105,7 +102,7 @@ const Home: FunctionComponent<{ categoriesData: Category[] }> = ({
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     const token = req.cookies.ACCESS_TOKEN;
     const { id } = jwt.verify(token, "hello");
 

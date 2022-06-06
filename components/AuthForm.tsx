@@ -15,12 +15,14 @@ import {
     Link,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import { useForm } from "react-hook-form";
 import { auth } from "../lib/mutations";
 import Logo from "./Logo";
 
-const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
+const AuthForm: FunctionComponent<{ mode: "signin" | "signup" }> = ({
+    mode,
+}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const router = useRouter();
@@ -133,7 +135,7 @@ const AuthForm: FC<{ mode: "signin" | "signup" }> = ({ mode }) => {
                     {mode === "signin" && (
                         <Box data-cy="1">
                             {" "}
-                            Don't have an account? Sign up{" "}
+                            Do not have an account? Sign up{" "}
                             <Link href="/signup" fontWeight="bold">
                                 {" "}
                                 here.{" "}

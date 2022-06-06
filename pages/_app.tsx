@@ -1,4 +1,5 @@
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { AppProps } from "next/app";
 import Layout from "../components/Layout";
 import "reset-css";
 
@@ -39,7 +40,7 @@ const theme = extendTheme({
     },
 });
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps }: AppProps) => {
     return (
         <ChakraProvider theme={theme}>
             {Component.authPage ? (

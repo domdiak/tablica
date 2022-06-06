@@ -22,7 +22,6 @@ const CatDropdown: React.FunctionComponent<CatDropdownProps> = ({
 }) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const router = useRouter();
-    console.log({ category });
 
     const handleDelete = async (data) => {
         await fetcher("/deleteCategory", { categoryId: data });
