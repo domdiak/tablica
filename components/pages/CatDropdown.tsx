@@ -9,9 +9,9 @@ import {
 import { HamburgerIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import React from "react";
-import fetcher from "../lib/fetcher";
-import ModalWindow from "../components/Modal";
-import { Category } from "../APIResponsesTypes";
+import fetcher from "../../lib/fetcher";
+import ModalWindow from "../Modal";
+import { Category } from "../../APIResponsesTypes";
 
 type CatDropdownProps = {
     category: Category;

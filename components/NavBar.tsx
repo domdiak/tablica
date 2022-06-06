@@ -5,7 +5,7 @@ import { AddIcon } from "@chakra-ui/icons";
 import { FunctionComponent } from "react";
 import Logo from "./Logo";
 import fetcher from "../lib/fetcher";
-import AddCatModal from "../pages/AddCatModal";
+import AddCatModal from "./pages/AddCatModal";
 
 const NavBar: FunctionComponent = () => {
     const { isOpen, onClose, onOpen } = useDisclosure();

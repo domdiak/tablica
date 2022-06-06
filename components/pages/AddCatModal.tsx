@@ -17,7 +17,7 @@ import {
 import { FunctionComponent } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import fetcher from "../lib/fetcher";
+import fetcher from "../../lib/fetcher";
 
 type AddCatModalProps = {
     isOpen: boolean;

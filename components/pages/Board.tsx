@@ -4,7 +4,7 @@ import { BsFillArchiveFill } from "react-icons/bs";
 import { Droppable } from "react-beautiful-dnd";
 import { FunctionComponent } from "react";
 import CategoryColumn from "./CategoryColumn";
-import { Category } from "../APIResponsesTypes";
+import { Category } from "../../APIResponsesTypes";
 
 type BoardProps = {
     categories: Category[];

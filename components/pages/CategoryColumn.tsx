@@ -3,9 +3,9 @@ import { AddIcon } from "@chakra-ui/icons";
 import { FunctionComponent } from "react";
 import Card from "./Card";
 import CatDropdown from "./CatDropdown";
-import CategoryName from "../components/CategoryName";
+import CategoryName from "../CategoryName";
 import AddCardModal from "./AddCardModal";
-import { Category } from "../APIResponsesTypes";
+import { Category } from "../../APIResponsesTypes";
 
 type CategoryColumnProps = {
     index: number;
