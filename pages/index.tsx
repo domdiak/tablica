@@ -17,7 +17,6 @@ const Home: FunctionComponent<HomeProps> = ({ categoriesData }) => {
     const [categories, setCategories] = useState(categoriesData);
     const { isOpen, onOpen } = useDisclosure();
 
-    // correct DragDrop context *****
     const DragDropContext: any = dynamic(
         () =>
             import("react-beautiful-dnd").then((mod) => {
