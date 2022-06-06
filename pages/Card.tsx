@@ -4,8 +4,15 @@ import { Draggable, resetServerContext } from "react-beautiful-dnd";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { FunctionComponent } from "react";
 import CardDropdown from "./CardDropdown";
+import { Card as CardType } from "../APIResponsesTypes";
 
-const Card: FunctionComponent = ({ card, index, archiveId }) => {
+type CardProps = {
+    card: CardType;
+    index: number;
+    archiveId: number;
+};
+
+const Card: FunctionComponent<CardProps> = ({ card, index, archiveId }) => {
     resetServerContext();
 
     return (

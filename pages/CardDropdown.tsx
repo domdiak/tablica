@@ -13,8 +13,17 @@ import { BsFillArchiveFill } from "react-icons/bs";
 import fetcher from "../lib/fetcher";
 import ModalEditCard from "./ModalEditCard";
 import ModalWindow from "../components/Modal";
+import { Card } from "../APIResponsesTypes";
 
-const CardDropdown: FunctionComponent = ({ card, archiveId }) => {
+type CardDropdownProps = {
+    card: Card;
+    archiveId: number;
+};
+
+const CardDropdown: FunctionComponent<CardDropdownProps> = ({
+    card,
+    archiveId,
+}) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const {
         isOpen: isOpenModal,

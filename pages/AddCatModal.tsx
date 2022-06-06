@@ -19,7 +19,15 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import fetcher from "../lib/fetcher";
 
-const AddCatModal: FunctionComponent = ({ isOpen, onClose }) => {
+type AddCatModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+};
+
+const AddCatModal: FunctionComponent<AddCatModalProps> = ({
+    isOpen,
+    onClose,
+}) => {
     const {
         register,
         handleSubmit,

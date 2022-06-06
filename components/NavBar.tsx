@@ -2,11 +2,12 @@ import { Box } from "@chakra-ui/layout";
 import { Button, Stack, Flex, useDisclosure } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { AddIcon } from "@chakra-ui/icons";
+import { FunctionComponent } from "react";
 import Logo from "./Logo";
 import fetcher from "../lib/fetcher";
 import AddCatModal from "../pages/AddCatModal";
 
-const NavBar = () => {
+const NavBar: FunctionComponent = () => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const router = useRouter();
     return (

@@ -17,10 +17,21 @@ import {
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
+import { Category } from "../APIResponsesTypes";
 
 import fetcher from "../lib/fetcher";
 
-const ModalAddCard: FunctionComponent = ({ isOpen, onClose, category }) => {
+type AddCardModalProps = {
+    isOpen: boolean;
+    onClose: () => void;
+    category: Category;
+};
+
+const ModalAddCard: FunctionComponent<AddCardModalProps> = ({
+    isOpen,
+    onClose,
+    category,
+}) => {
     const {
         register,
         handleSubmit,

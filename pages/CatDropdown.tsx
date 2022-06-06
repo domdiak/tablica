@@ -11,23 +11,15 @@ import { useRouter } from "next/router";
 import React from "react";
 import fetcher from "../lib/fetcher";
 import ModalWindow from "../components/Modal";
+import { Category } from "../APIResponsesTypes";
 
 type CatDropdownProps = {
-    category: object;
-};
-
-type CategoryProps = {
-    category: object;
-    id: number;
-    name: string;
-    userId: number;
-    createdAt: Date;
-    updatedAt: Date;
+    category: Category;
 };
 
 const CatDropdown: React.FunctionComponent<CatDropdownProps> = ({
     category,
-}: CategoryProps) => {
+}) => {
     const { isOpen, onClose, onOpen } = useDisclosure();
     const router = useRouter();
     console.log({ category });

@@ -6,11 +6,11 @@ import { FunctionComponent } from "react";
 import CategoryColumn from "./CategoryColumn";
 import { Category } from "../APIResponsesTypes";
 
-interface BoardProps {
+type BoardProps = {
     categories: Category[];
     onOpen: () => void;
     isOpen: boolean;
-}
+};
 
 const Board: FunctionComponent<BoardProps> = ({
     categories,
