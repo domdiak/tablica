@@ -10,10 +10,10 @@ import { HamburgerIcon, EditIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useRouter } from "next/router";
 import React, { FunctionComponent } from "react";
 import { BsFillArchiveFill } from "react-icons/bs";
-import fetcher from "../../lib/fetcher";
+import fetcher from "../lib/fetcher";
 import ModalEditCard from "./ModalEditCard";
-import ModalWindow from "../Modal";
-import { Card } from "../../APIResponsesTypes";
+import ModalWindow from "./Modal";
+import { Card } from "../APIResponsesTypes";
 
 type CardDropdownProps = {
     card: Card;

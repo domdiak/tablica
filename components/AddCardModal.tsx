@@ -17,9 +17,9 @@ import {
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
-import { Category } from "../../APIResponsesTypes";
+import { Category } from "../APIResponsesTypes";
 
-import fetcher from "../../lib/fetcher";
+import fetcher from "../lib/fetcher";
 
 type AddCardModalProps = {
     isOpen: boolean;

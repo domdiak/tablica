@@ -19,7 +19,6 @@ Pytania:
 -->How to optmise AddCard code?
 --> What's the purpose of res.json in POST requests
 
-================ Today =========================
 TBD:
 --> Center all modals DONE? "isCentered"
 
@@ -31,11 +30,15 @@ DONE:
 --> Center things in a category DONE
 -> CategoryColumn --> alignLeft DONE
 -> Fix EditName button DONE (fixed editable instead)
+-> Fix naming of Title / Description DONE
 
+================ Today =========================
 Current:
 
 IN PROGRESS:
--> Fix naming of Title / Description DONE
+-> Fix TypeScript errors
+-> Deploy on vercel
+-> Add a hosted database
 -> Fix order of categories
 
 WAITLIST:

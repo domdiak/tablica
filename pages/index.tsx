@@ -4,10 +4,10 @@ import dynamic from "next/dynamic";
 import jwt from "jsonwebtoken";
 import { GetServerSideProps } from "next";
 import { DropResult } from "react-beautiful-dnd";
-import Board from "./Board";
-import prisma from "../../lib/prisma";
-import { Category } from "../../APIResponsesTypes";
-import fetcher from "../../lib/fetcher";
+import Board from "../components/Board";
+import prisma from "../lib/prisma";
+import { Category } from "../APIResponsesTypes";
+import fetcher from "../lib/fetcher";
 
 type HomeProps = {
     categoriesData: Category[];

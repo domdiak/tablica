@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import fetcher from "../../lib/fetcher";
+import fetcher from "../lib/fetcher";
 
 const ModalEditCard = ({ isOpen, onClose, card }) => {
     const {
