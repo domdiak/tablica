@@ -36,9 +36,9 @@ const CategoryColumn: FunctionComponent<CategoryColumnProps> = ({
                 />
             )}
             <Flex
-                minWidth="300px"
+                minWidth="270px"
                 height="600px"
-                margin="10px"
+                margin="5px"
                 borderRadius="10px"
                 ref={provided.innerRef}
                 {...provided.droppableProps}

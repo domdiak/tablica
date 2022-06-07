@@ -43,9 +43,6 @@ const cookieOptions = {
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-    const { key } = req.body;
-    console.log({ key });
-
     if (req.method !== "POST")
         return res
             .status(405)

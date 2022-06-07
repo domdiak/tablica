@@ -20,13 +20,13 @@ const Card: FunctionComponent<CardProps> = ({ card, index, archiveId }) => {
             <Draggable draggableId={card.title} index={index}>
                 {(provided, snapshot) => (
                     <Grid
-                        width="300px"
-                        height="90px"
+                        width="270px"
+                        height="100px"
                         margin="10px"
                         padding="5px"
                         borderRadius="10px"
                         boxShadow="md"
-                        templateRows="repeat(2, 1fr)"
+                        templateRows="1fr 1fr"
                         templateColumns="3fr 1fr"
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}

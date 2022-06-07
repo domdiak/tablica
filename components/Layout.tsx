@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
                 {" "}
                 <NavBar />
             </Box>
-            <Box paddingTop="150px">{children}</Box>
+            <Box paddingTop="100px">{children}</Box>
         </Box>
     );
 };

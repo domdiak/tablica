@@ -35,6 +35,9 @@ const Board: FunctionComponent<BoardProps> = ({
                     return category.name !== "Archived";
                 })
                 .sort((a) => (a.name === "Archived" ? 1 : -1))
+                .sort((a, b) => {
+                    return a.id - b.id;
+                })
                 .map((category, index: number) => (
                     <Droppable droppableId={category.name} key={category.id}>
                         {(provided, snapshot) => (
@@ -56,7 +59,7 @@ const Board: FunctionComponent<BoardProps> = ({
             <Button
                 variant="primary"
                 height="600px"
-                marginY="10px"
+                marginY="5px"
                 borderRadius="10px"
                 onClick={setShowArchive.toggle}
             >
