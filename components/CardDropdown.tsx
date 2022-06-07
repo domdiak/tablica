@@ -65,8 +65,8 @@ const CardDropdown: FunctionComponent<CardDropdownProps> = ({
                 {card.categoryId !== archiveId && (
                     <MenuItem
                         icon={<BsFillArchiveFill />}
-                        onClick={() => {
-                            updateCard(card.id, archiveId);
+                        onClick={async () => {
+                            await updateCard(card.id, archiveId);
                             router.reload();
                         }}
                     >
