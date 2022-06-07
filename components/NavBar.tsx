@@ -30,7 +30,7 @@ const NavBar: FunctionComponent = () => {
                             <Button
                                 variant="primary"
                                 onClick={async () => {
-                                    await fetcher("/logout");
+                                    await fetcher("/logout", { key: 23 });
                                     router.reload();
                                 }}
                             >

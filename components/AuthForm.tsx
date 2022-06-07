@@ -17,8 +17,8 @@ import {
 import { useRouter } from "next/router";
 import { FunctionComponent, useState } from "react";
 import { useForm } from "react-hook-form";
-import { auth } from "../lib/mutations";
 import Logo from "./Logo";
+import { auth } from "../lib/mutations";
 
 const AuthForm: FunctionComponent<{ mode: "signin" | "signup" }> = ({
     mode,

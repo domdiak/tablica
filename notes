@@ -31,15 +31,19 @@ DONE:
 -> CategoryColumn --> alignLeft DONE
 -> Fix EditName button DONE (fixed editable instead)
 -> Fix naming of Title / Description DONE
+-> Fix TypeScript errors DONE
+-> Deploy on vercel DONE
+-> Add a hosted database DONE
 
 ================ Today =========================
 Current:
 
 IN PROGRESS:
--> Fix TypeScript errors
--> Deploy on vercel
--> Add a hosted database
 -> Fix order of categories
+-> (D) Fix logout button
+-> Add Error on login page
+-> Add Error on signup page if user exists
+-> Disable Editable on Archived
 
 WAITLIST:
 --> Fix Archive icon
@@ -49,3 +53,5 @@ WAITLIST:
 
 AMBITIOUS:
 --> Look into testing
+
+TO D
