@@ -39,7 +39,6 @@ model Category {
   id Int @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  // find id of the last category added with that userid
   name String 
   cards Card[]
   user User @relation(fields: [userId], references: [id])
