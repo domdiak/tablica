@@ -22,6 +22,7 @@ const NavBar: FunctionComponent = () => {
                         <Stack direction="row" spacing={7}>
                             <Button
                                 variant="primary"
+                                data-cy="addButton"
                                 leftIcon={<AddIcon />}
                                 onClick={onOpen}
                             >
@@ -29,6 +30,7 @@ const NavBar: FunctionComponent = () => {
                             </Button>
                             <Button
                                 variant="primary"
+                                data-cy="logoutButton"
                                 onClick={async () => {
                                     await fetcher("/logout", { key: 23 });
                                     router.reload();
@@ -37,7 +39,10 @@ const NavBar: FunctionComponent = () => {
                                 {" "}
                                 Logout{" "}
                             </Button>
-                            <Button variant="primary">Home</Button>
+
+                            <Button variant="primary" data-cy="homeButton">
+                                Home
+                            </Button>
                         </Stack>
                     </Flex>
                 </Flex>
