@@ -17,7 +17,7 @@ const Card: FunctionComponent<CardProps> = ({ card, index, archiveId }) => {
 
     return (
         <Box>
-            <Draggable draggableId={card.title} index={index}>
+            <Draggable draggableId={card.description} index={index}>
                 {(provided, snapshot) => (
                     <Grid
                         width="270px"

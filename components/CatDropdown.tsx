@@ -36,7 +36,11 @@ const CatDropdown: React.FunctionComponent<CatDropdownProps> = ({
                     handleDelete={() => handleDelete(category.id)}
                 />
             )}
-            <MenuButton as={IconButton} icon={<HamburgerIcon />}>
+            <MenuButton
+                as={IconButton}
+                icon={<HamburgerIcon />}
+                data-cy="catDropdown"
+            >
                 Click here...
             </MenuButton>
             <MenuList>

@@ -1,5 +1,5 @@
 describe("User main board page", () => {
-    it("logs the user in", () => {
+    before(() => {
         cy.login("domdiak@gmail.com", "123");
     });
 
@@ -10,14 +10,28 @@ describe("User main board page", () => {
         cy.get('[data-cy="homeButton"]').should("exist");
     });
 
+    // how to add a second button
+
     it("should have categories displayed", () => {
         cy.get("[data-rbd-droppable-id='Shortlist']")
             .should("exist")
             .within(() => {
-                return cy.get("button");
+                return cy.get("button").contains("Add Card").should("exist");
             });
-        cy.get("[data-rbd-droppable-id='Applied']").should("exist");
-        cy.get("[data-rbd-droppable-id='Interview']").should("exist");
-        cy.get("[data-rbd-droppable-id='Rejected']").should("exist");
+        cy.get("[data-rbd-droppable-id='Applied']")
+            .should("exist")
+            .within(() => {
+                return cy.get("button").contains("Add Card").should("exist");
+            });
+        cy.get("[data-rbd-droppable-id='Interview']")
+            .should("exist")
+            .within(() => {
+                return cy.get("button").contains("Add Card").should("exist");
+            });
+        cy.get("[data-rbd-droppable-id='Rejected']")
+            .should("exist")
+            .within(() => {
+                return cy.get("button").contains("Add Card").should("exist");
+            });
     });
 });
