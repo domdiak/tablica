@@ -75,13 +75,13 @@ const AuthForm: FunctionComponent<{ mode: "signin" | "signup" }> = ({
                 >
                     <Stack spacing="4">
                         {error && (
-                            <Alert status="error">
+                            <Alert status="error" data-cy="errorAlert">
                                 <AlertIcon />
                                 <AlertTitle> {error} </AlertTitle>
                             </Alert>
                         )}
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <FormControl id="email" isInvalid={errors.password}>
+                            <FormControl id="email" isInvalid={errors.email}>
                                 <FormLabel> Email address </FormLabel>
                                 <Input
                                     placeholder="email"
@@ -117,6 +117,12 @@ const AuthForm: FunctionComponent<{ mode: "signin" | "signup" }> = ({
                                     <FormErrorMessage>
                                         {" "}
                                         {errors.password.message}
+                                    </FormErrorMessage>
+                                )}
+                                {errors.email?.message && (
+                                    <FormErrorMessage>
+                                        {" "}
+                                        {errors.email.message}
                                     </FormErrorMessage>
                                 )}
                             </FormControl>
