@@ -12,7 +12,7 @@ const ModalWindow = ({ isOpen, onClose, handleDelete }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent data-cy="modal">
                 <ModalCloseButton />
                 <ModalHeader>Are you sure?</ModalHeader>
                 <ModalFooter>

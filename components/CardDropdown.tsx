@@ -55,11 +55,20 @@ const CardDropdown: FunctionComponent<CardDropdownProps> = ({
             {isOpen && (
                 <ModalEditCard isOpen={isOpen} onClose={onClose} card={card} />
             )}
-            <MenuButton size="sm" as={IconButton} icon={<HamburgerIcon />}>
+            <MenuButton
+                size="sm"
+                as={IconButton}
+                data-cy="cardMenuBtn"
+                icon={<HamburgerIcon />}
+            >
                 Click here. ..
             </MenuButton>
-            <MenuList>
-                <MenuItem icon={<EditIcon />} onClick={onOpen}>
+            <MenuList data-cy="cardMenuList">
+                <MenuItem
+                    icon={<EditIcon />}
+                    onClick={onOpen}
+                    data-cy="cardMenuItem"
+                >
                     Edit
                 </MenuItem>
                 {card.categoryId !== archiveId && (
@@ -69,11 +78,16 @@ const CardDropdown: FunctionComponent<CardDropdownProps> = ({
                             await updateCard(card.id, archiveId);
                             router.reload();
                         }}
+                        data-cy="cardMenuItem"
                     >
                         Archive
                     </MenuItem>
                 )}
-                <MenuItem icon={<DeleteIcon />} onClick={onOpenModal}>
+                <MenuItem
+                    data-cy="cardMenuItem"
+                    icon={<DeleteIcon />}
+                    onClick={onOpenModal}
+                >
                     Delete
                 </MenuItem>
             </MenuList>

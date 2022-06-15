@@ -45,6 +45,7 @@ const CategoryColumn: FunctionComponent<CategoryColumnProps> = ({
                 direction="column"
                 justifyContent="space-between"
                 bg={snapshot.isDraggingOver ? "main.200" : "main.100"}
+                data-cy="catContainer"
             >
                 <div>
                     <Flex margin="5px" justify="space-between">

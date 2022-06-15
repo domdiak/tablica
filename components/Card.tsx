@@ -32,6 +32,7 @@ const Card: FunctionComponent<CardProps> = ({ card, index, archiveId }) => {
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                         bg={snapshot.isDragging ? "main.500" : "main.300"}
+                        data-cy="cardContainer"
                     >
                         <GridItem margin="5px">
                             <Heading size="md"> {card.description} </Heading>

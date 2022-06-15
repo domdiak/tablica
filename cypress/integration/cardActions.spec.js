@@ -1,13 +1,9 @@
-import {
-    getDroppableSelector,
-    getHandleSelector,
-    getDraggableSelector,
-} from "./util";
+import { getDroppableSelector, getHandleSelector } from "./util";
 
 describe("User wants to execute an action with a card", () => {
-    before(() => {
-        cy.login("domdiak@gmail.com", "123");
-    });
+    // beforeEach(() => {
+    //     cy.login("domdiak@gmail.com", "123");
+    // });
 
     it("creates a new card", () => {
         cy.get("[data-rbd-droppable-id='Applied']").within(() => {
@@ -21,9 +17,11 @@ describe("User wants to execute an action with a card", () => {
             .click();
         cy.url().should("be.equal", "http://localhost:3000/");
         cy.wait(3000);
+        cy.getCookie("ACCESS_TOKEN");
     });
 
     it.skip("gets added to the right category", () => {
+        cy.getCookie("ACCESS_TOKEN");
         cy.get("[data-rbd-droppable-id='Applied']").within(() => {
             return cy
                 .get("[data-rbd-draggable-id='Salesforce']")
@@ -39,7 +37,7 @@ describe("User wants to execute an action with a card", () => {
         cy.get("@first-list")
             .find(getHandleSelector())
             .first()
-            .should("contain", "Klarna")
+            .should("contain", "Salesforce")
             .focus()
             .trigger("keydown", { keyCode: 32 })
             .trigger("keydown", {
@@ -47,17 +45,54 @@ describe("User wants to execute an action with a card", () => {
                 force: true,
             })
             .trigger("keydown", { keyCode: 32, force: true });
-        cy.get("@first-list").should("not.contain", "Klarna");
-
-        cy.get("@second-list").should("contain", "Klarna");
+        cy.get("@first-list").should("not.contain", "Salesforce");
+        cy.get("@second-list").should("contain", "Salesforce");
     });
 
-    it("gets removed", () => {
-        cy.get("[data-rbd-droppable-id='Applied']").as("first-list");
+    it.only("gets removed", () => {
+        cy.login("domdiak@gmail.com", "123").then(() => {
+            cy.get("[data-rbd-droppable-id='Applied']")
+                .within(() => {
+                    return cy
+                        .get("[data-rbd-draggable-id='Salesforce']")
+                        .as("card");
+                })
+                .as("list");
+        });
 
-        cy.get("@first-list")
-            .find(getDraggableSelector())
-            .should("contain", "Klarna")
-            .focus();
+        // Opens the dropdown menu
+        cy.getCookie("ACCESS_TOKEN");
+        cy.get("@card").within(() => {
+            return cy
+                .get("[data-cy='cardMenuBtn']")
+                .click()
+                .get("[data-cy='cardMenuItem']")
+                .last()
+                .debug()
+                .click();
+        });
+
+        cy.get('[data-cy="modal"]')
+            .children()
+            .children()
+            .contains("Confirm")
+            .click();
+
+        // // Removes a card
+        // cy.get('[data-cy="modal"]')
+        //     .children()
+        //     .children()
+        //     .contains("Confirm")
+        //     .click();
+
+        cy.get("@list").should("not.contain", "Salesforce");
     });
 });
+
+// add test for editing
+// add test for archiving
+
+// data-rbd-draggable-context-id="1"
+// data-rbd-draggable-id="Amazon"
+
+// data-rbd-droppable-id="Applied"
