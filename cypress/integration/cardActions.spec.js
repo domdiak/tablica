@@ -1,9 +1,9 @@
 import { getDroppableSelector, getHandleSelector } from "./util";
 
 describe("User wants to execute an action with a card", () => {
-    // beforeEach(() => {
-    //     cy.login("domdiak@gmail.com", "123");
-    // });
+    beforeEach(() => {
+        cy.login("domdiak@gmail.com", "123");
+    });
 
     it("creates a new card", () => {
         cy.get("[data-rbd-droppable-id='Applied']").within(() => {
@@ -16,12 +16,9 @@ describe("User wants to execute an action with a card", () => {
             .should("have.class", "chakra-button css-53gvbz")
             .click();
         cy.url().should("be.equal", "http://localhost:3000/");
-        cy.wait(3000);
-        cy.getCookie("ACCESS_TOKEN");
     });
 
-    it.skip("gets added to the right category", () => {
-        cy.getCookie("ACCESS_TOKEN");
+    it("gets added to the right category", () => {
         cy.get("[data-rbd-droppable-id='Applied']").within(() => {
             return cy
                 .get("[data-rbd-draggable-id='Salesforce']")
@@ -29,14 +26,14 @@ describe("User wants to execute an action with a card", () => {
         });
     });
 
-    it.skip("gets moved to another category", () => {
+    it("gets moved to another category", () => {
         cy.get(getDroppableSelector()).eq(1).as("first-list");
 
         cy.get(getDroppableSelector()).eq(2).as("second-list");
 
         cy.get("@first-list")
             .find(getHandleSelector())
-            .first()
+            .last()
             .should("contain", "Salesforce")
             .focus()
             .trigger("keydown", { keyCode: 32 })
@@ -49,50 +46,29 @@ describe("User wants to execute an action with a card", () => {
         cy.get("@second-list").should("contain", "Salesforce");
     });
 
-    it.only("gets removed", () => {
-        cy.login("domdiak@gmail.com", "123").then(() => {
-            cy.get("[data-rbd-droppable-id='Applied']")
-                .within(() => {
-                    return cy
-                        .get("[data-rbd-draggable-id='Salesforce']")
-                        .as("card");
-                })
-                .as("list");
+    it("gets removed", () => {
+        cy.get("[data-rbd-droppable-id='Applied']").as("list");
+        cy.get("@list").within(() => {
+            return cy.get("[data-rbd-draggable-id='Salesforce']").as("card");
         });
 
         // Opens the dropdown menu
-        cy.getCookie("ACCESS_TOKEN");
         cy.get("@card").within(() => {
             return cy
                 .get("[data-cy='cardMenuBtn']")
                 .click()
                 .get("[data-cy='cardMenuItem']")
                 .last()
-                .debug()
-                .click();
+                .click({ force: true });
         });
 
+        // Removes a card
         cy.get('[data-cy="modal"]')
             .children()
             .children()
             .contains("Confirm")
             .click();
 
-        // // Removes a card
-        // cy.get('[data-cy="modal"]')
-        //     .children()
-        //     .children()
-        //     .contains("Confirm")
-        //     .click();
-
         cy.get("@list").should("not.contain", "Salesforce");
     });
 });
-
-// add test for editing
-// add test for archiving
-
-// data-rbd-draggable-context-id="1"
-// data-rbd-draggable-id="Amazon"
-
-// data-rbd-droppable-id="Applied"
