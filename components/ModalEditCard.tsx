@@ -35,7 +35,7 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
-            <ModalContent>
+            <ModalContent data-cy="editCardModal">
                 <ModalHeader>
                     Edit card:
                     <ModalCloseButton />
@@ -50,7 +50,7 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
 
                     <form id="edit-card" onSubmit={handleSubmit(onSubmit)}>
                         <FormControl>
-                            <FormLabel> Job Role</FormLabel>
+                            <FormLabel> Company Name</FormLabel>
                             <Input
                                 type="description"
                                 name="description"
@@ -59,7 +59,7 @@ const ModalEditCard = ({ isOpen, onClose, card }) => {
                                     required: "Required field",
                                 })}
                             />
-                            <FormLabel> Company Name</FormLabel>
+                            <FormLabel> Job Role</FormLabel>
                             <Input
                                 type="title"
                                 name="title"

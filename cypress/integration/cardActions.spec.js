@@ -71,4 +71,28 @@ describe("User wants to execute an action with a card", () => {
 
         cy.get("@list").should("not.contain", "Salesforce");
     });
+
+    it.only("edits the selected card", () => {
+        cy.get("[data-rbd-droppable-id='Applied']").as("list");
+        cy.get("@list").within(() => {
+            return cy.get("[data-rbd-draggable-id='Klarna']").as("card");
+        });
+        cy.get("@card").within(() => {
+            return cy
+                .get("[data-cy='cardMenuBtn']")
+                .click()
+                .get("[data-cy='cardMenuItem']")
+                .first()
+                .click({ force: true });
+        });
+        cy.get("input[type=description]").should("have.value", "Klarna");
+        cy.get("input[type=title]").should("have.value", "Full Stack Engineer");
+        cy.get("input[type=link]").should("have.value", "www.klarna.com");
+        cy.get("input[type=description]").clear().type("Gorillas");
+        cy.get("button[type=submit]")
+            .should("have.class", "chakra-button css-bgweyu")
+            .click();
+
+        cy.get("@list").get("[data-rbd-draggable-id='Gorillas']");
+    });
 });
