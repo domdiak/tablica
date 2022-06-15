@@ -1,6 +1,22 @@
 ## Description
 
-Kanban-style app for tracking your job applications. You can check it out here.
+Kanban-style app for tracking your job applications. App is deployed on Vercel can be accessed [here](https://kanban-project-gold.vercel.app/)
+
+## Functionality 
+
+* Auth (sign in / sign up) functionality based on JWT 
+* Dynamic kanban-style board to keep on top of job applications and track your progress
+* Ability to add / remove / edit job cards 
+* Drag & Drop cards between different categories
+* Archive cards to keep the info but remove them from the main board 
+
+## Screenshots
+<p float="left">
+<img src="/screenshots/tablica-screenshot1.png" width="500" height="260">
+<img src="/screenshots/tablica-screenshot2.png" width="500" height="260">
+<img src="/screenshots/tablica-screenshot3.png" width="500" height="260">
+<img src="/screenshots/tablica-screenshot4.png" width="500" height="260">
+<p>
 
 ## Tech Stack
 
@@ -28,3 +44,7 @@ Kanban-style app for tracking your job applications. You can check it out here.
 
 ### Run 
 1. Start the application with ```npm run dev``` 
+  
+
+
+
