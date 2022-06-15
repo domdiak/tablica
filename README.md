@@ -9,6 +9,7 @@ Kanban-style app for tracking your job applications. App is deployed on Vercel c
 * Ability to add / remove / edit job cards 
 * Drag & Drop cards between different categories
 * Archive cards to keep the info but remove them from the main board 
+* User data gets stored in a PostgreSQL database, hosted on Heroku
 
 ## Screenshots
 <p float="left">
