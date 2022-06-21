@@ -1,6 +1,5 @@
-import { PrismaClient, User } from "@prisma/client";
-// import prisma from "../../lib/prisma";
-// import { User } from "../../APIResponseTypes";
+import { PrismaClient } from "@prisma/client";
+import bcrypt from "bcrypt";
 
 export interface CreateUserActionParams {
     prisma: PrismaClient;
@@ -12,17 +11,26 @@ const createUserAction = async ({
     prisma,
     email,
     password,
-}: CreateUserActionParams): Promise<User> => {
-    return prisma.user.create({ data: { email, password } });
+}: CreateUserActionParams) => {
+    const salt = bcrypt.genSaltSync();
+
+    const newUser = await prisma.user.create({
+        data: {
+            email,
+            password: bcrypt.hashSync(password, salt),
+            categories: {
+                create: [
+                    {
+                        name: "Shortlist",
+                    },
+                    { name: "Applied" },
+                    { name: "Interview" },
+                    { name: "Rejected" },
+                    { name: "Archived" },
+                ],
+            },
+        },
+    });
 };
 
 export default createUserAction;
-
-// const createUserAction = async ({
-//     prisma,
-//     email,
-//     password,
-// }: CreateUserActionParams): Promise<User> => {
-//     return prisma.user.create({ data: { email, password } });
-// };
-// export default createUserAction;
