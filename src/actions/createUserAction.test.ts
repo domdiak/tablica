@@ -1,47 +1,27 @@
 import { v4 as uuidv4 } from "uuid";
 // import { PrismaClient } from "@prisma/client";
-import prisma from "../../lib/prisma";
 import createUserAction from "./createUserAction";
+import prisma from "../../lib/prisma";
 
-afterAll(async (done) => {
-    await prisma.$disconnect();
-    done();
-});
+// Create data
+// beforeAll (async () => {
 
-describe("createUserAction() - unit", () => {
-    it("creates new user correctly", async () => {
-        const email = `${uuidv4()}@test.com`;
-        const password = uuidv4();
+// })
 
-        await createUserAction({ prisma, email, password });
+// Delete data
+// afterAll(async () => {
 
-        const [savedUser] = await prisma.user.findMany({
-            where: { email },
-            take: 1,
-        });
+// })
 
-        expect(savedUser.email).toBe(email);
+it("should create a new user", async () => {
+    const email = `${uuidv4()}@test.com`;
+    const password = uuidv4();
+
+    await createUserAction({ prisma, email, password });
+
+    const [savedUser] = await prisma.user.findUnique({
+        where: { email },
     });
 
-    it("fails if tries to create records with the same user twice", async () => {
-        const email = `${uuidv4()}@test.com`;
-        const password = uuidv4();
-
-        await createUserAction({ prisma, email, password });
-
-        const [savedUser] = await prisma.user.findMany({
-            where: { email },
-            take: 1,
-        });
-
-        console.log("savedUser", savedUser);
-
-        // expect(savedUser.email).toBe(email);
-
-        // await expect(() =>
-        //     createUserAction({ prisma, email, password })
-        // ).rejects.toThrow(
-        //     "Unique constraint failed on the constraint: `email_unique`"
-        // );
-    });
+    expect(savedUser.email).toBe(email);
 });

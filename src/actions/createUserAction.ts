@@ -1,5 +1,6 @@
 import { PrismaClient, User } from "@prisma/client";
-import { prismaMock } from "../../singleton";
+// import prisma from "../../lib/prisma";
+// import { User } from "../../APIResponseTypes";
 
 export interface CreateUserActionParams {
     prisma: PrismaClient;
@@ -14,4 +15,14 @@ const createUserAction = async ({
 }: CreateUserActionParams): Promise<User> => {
     return prisma.user.create({ data: { email, password } });
 };
+
 export default createUserAction;
+
+// const createUserAction = async ({
+//     prisma,
+//     email,
+//     password,
+// }: CreateUserActionParams): Promise<User> => {
+//     return prisma.user.create({ data: { email, password } });
+// };
+// export default createUserAction;
